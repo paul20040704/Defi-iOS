@@ -20,6 +20,8 @@ class AccountVC: UIViewController {
     @IBOutlet weak var settingView: SettingView!
     @IBOutlet weak var referralScrollView: UIScrollView!
     
+    let memberViewModel = MemberViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,6 +36,17 @@ class AccountVC: UIViewController {
         setButton.addTarget(self, action: #selector(selectClick(_:)), for: .touchUpInside)
         referralButton.addTarget(self, action: #selector(selectClick(_:)), for: .touchUpInside)
         
+        memberView.commonInit()
+        observeEvent()
+    }
+    
+    func observeEvent() {
+        memberViewModel.infoBindClosure = { [weak self] in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                self.nameLabel.text = self.memberViewModel.memeberInfo.nickname ?? ""
+            }
+        }
     }
 
     

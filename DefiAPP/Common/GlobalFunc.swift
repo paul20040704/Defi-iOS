@@ -32,6 +32,17 @@ class GlobalFunc {
         }
     }
     
+    func goLogout() {
+        UD.removeObject(forKey: "token")
+        UD.removeObject(forKey: "expTime")
+        let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginVC")
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                window.rootViewController = loginVC
+            }
+        }
+    }
+    
     //取得當前timeInterval
     func getTimeInterval() -> Int {
         let now = Date()

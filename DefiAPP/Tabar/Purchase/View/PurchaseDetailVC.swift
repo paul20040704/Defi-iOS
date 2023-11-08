@@ -58,7 +58,8 @@ class PurchaseDetailVC: UIViewController {
     }
     
     func observeEvent() {
-        viewModel?.updateAmount = { amountType in
+        viewModel?.updateAmount = { [weak self] amountType in
+            guard let self else { return }
             self.amountTextField.text = "\(self.viewModel?.amount ?? 0)"
             self.expectLabel.text = self.viewModel?.expectAmount(monthType: 0) 
             self.seasonExpectLabel.text = self.viewModel?.expectAmount(monthType: 1)

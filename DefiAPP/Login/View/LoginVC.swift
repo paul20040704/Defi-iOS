@@ -17,6 +17,8 @@ class LoginVC: UIViewController {
     @IBOutlet weak var forgotButton: UIButton!
     @IBOutlet weak var nextButton: CustomNextButton!
     
+    @IBOutlet weak var registerButton: UIButton!
+    
     let loginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
@@ -31,14 +33,22 @@ class LoginVC: UIViewController {
         
         emailTextField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
         showPasswordButton.addTarget(self, action: #selector(passwordVisibleBtnClick(_:)), for: .touchUpInside)
         keepButton.addTarget(self, action: #selector(keepAccountClick(_:)), for: .touchUpInside)
         forgotButton.addTarget(self, action: #selector(goForgot), for: .touchUpInside)
         nextButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        
+        registerButton.addTarget(self, action: #selector(goRegister), for: .touchUpInside)
     }
     
+    //MARK: - observe
     func observeEvent() {
-        loginViewModel.loginResult = { result, message in
+        loginViewModel.loginResult = { [weak self] result, message in
+            guard let self else { return }
             if result {
                 DispatchQueue.main.async {
                     GC.goMain()
@@ -48,6 +58,20 @@ class LoginVC: UIViewController {
                 print(message)
             }
         }
+        
+        loginViewModel.updateKeepAccount = { [weak self] keepAccount in
+            guard let self else { return }
+            self.emailTextField.text = keepAccount
+        }
+        
+        loginViewModel.updateKeepButton = { [weak self] isKeep in
+            guard let self else { return }
+            let imageName = isKeep ? "select" : "normal"
+            self.keepButton.setImage(UIImage(named: imageName), for: .normal)
+            self.keepButton.isSelected = isKeep
+        }
+        
+        loginViewModel.judgeKeep()
     }
     
     @objc func validateFields() {
@@ -71,8 +95,7 @@ class LoginVC: UIViewController {
     
     @objc func keepAccountClick(_ btn: UIButton) {
         btn.isSelected = !btn.isSelected
-        let imageName = btn.isSelected ? "select" : "normal"
-        btn.setImage(UIImage(named: imageName), for: .normal)
+        loginViewModel.isKeepAccount = btn.isSelected
     }
     
     @objc func login() {
@@ -80,5 +103,18 @@ class LoginVC: UIViewController {
         loginViewModel.login(loginInfo: parameters)
     }
     
+    @objc func goRegister() {
+        let registerVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "RegisterVC")
+        self.navigationController?.show(registerVC, sender: nil)
+    }
+    
 
+}
+
+
+extension LoginVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

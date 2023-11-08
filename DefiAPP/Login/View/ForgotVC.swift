@@ -11,9 +11,16 @@ class ForgotVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var validTextField: UITextField!
     @IBOutlet weak var validButton: CustomNextButton!
+    
     @IBOutlet weak var newPwTextField: UITextField!
     @IBOutlet weak var confirmPwTextField: UITextField!
+    
+    @IBOutlet weak var showButton: UIButton!
+    @IBOutlet weak var showConfirmButton: UIButton!
+    
     @IBOutlet weak var nextButton: CustomNextButton!
+    
+    let loginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +36,9 @@ class ForgotVC: UIViewController {
         validTextField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         newPwTextField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         confirmPwTextField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
+        
+        showButton.addTarget(self, action: #selector(passwordVisibleBtnClick(_:)), for: .touchUpInside)
+        showConfirmButton.addTarget(self, action: #selector(passwordVisibleBtnClick(_:)), for: .touchUpInside)
     }
 
     @objc func validateFields() {
@@ -44,6 +54,21 @@ class ForgotVC: UIViewController {
         }else {
             nextButton.updateButton(isNext: false)
         }
+    }
+    
+    //MARK: - action
+    
+    @objc func passwordVisibleBtnClick(_ btn: UIButton) {
+        if btn == showButton {
+            showButton.togglePasswordVisibility(textField: newPwTextField)
+        }else {
+            showConfirmButton.togglePasswordVisibility(textField: confirmPwTextField)
+        }
+    }
+    
+    
+    @objc func resetClick() {
+        
     }
 
 }

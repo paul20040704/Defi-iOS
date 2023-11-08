@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0713D9792AF8E2B20047423E /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0713D9782AF8E2B20047423E /* Wallet.storyboard */; };
 		0713D97B2AF8E2C90047423E /* WalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0713D97A2AF8E2C90047423E /* WalletVC.swift */; };
+		074A8C8A2AFB37E400566A20 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074A8C892AFB37E400566A20 /* RegisterVC.swift */; };
+		074A8C8F2AFB820300566A20 /* LanuchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074A8C8E2AFB820300566A20 /* LanuchVC.swift */; };
+		074A8C912AFB871F00566A20 /* MemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074A8C902AFB871F00566A20 /* MemberViewModel.swift */; };
+		074A8C932AFB875500566A20 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074A8C922AFB875500566A20 /* MemberModel.swift */; };
 		075B27232AEF831700403AC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075B27222AEF831700403AC1 /* AppDelegate.swift */; };
 		075B27252AEF831700403AC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075B27242AEF831700403AC1 /* SceneDelegate.swift */; };
 		075B272A2AEF831700403AC1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 075B27282AEF831700403AC1 /* Login.storyboard */; };
@@ -77,6 +81,10 @@
 /* Begin PBXFileReference section */
 		0713D9782AF8E2B20047423E /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		0713D97A2AF8E2C90047423E /* WalletVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVC.swift; sourceTree = "<group>"; };
+		074A8C892AFB37E400566A20 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		074A8C8E2AFB820300566A20 /* LanuchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanuchVC.swift; sourceTree = "<group>"; };
+		074A8C902AFB871F00566A20 /* MemberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewModel.swift; sourceTree = "<group>"; };
+		074A8C922AFB875500566A20 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		075B271F2AEF831700403AC1 /* DefiAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DefiAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		075B27222AEF831700403AC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		075B27242AEF831700403AC1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +180,33 @@
 			path = Wallet;
 			sourceTree = "<group>";
 		};
+		074A8C8B2AFB37EC00566A20 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				075B27282AEF831700403AC1 /* Login.storyboard */,
+				075B27532AEF89CA00403AC1 /* LoginVC.swift */,
+				074A8C892AFB37E400566A20 /* RegisterVC.swift */,
+				075B276D2AF250A900403AC1 /* ForgotVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		074A8C8C2AFB37F600566A20 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				075B27692AF21EB900403AC1 /* LoginModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		074A8C8D2AFB380000566A20 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				075B27672AF21DF700403AC1 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		075B27162AEF831700403AC1 = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +240,7 @@
 				075B27242AEF831700403AC1 /* SceneDelegate.swift */,
 				075B272B2AEF831700403AC1 /* Assets.xcassets */,
 				075B272D2AEF831700403AC1 /* LaunchScreen.storyboard */,
+				074A8C8E2AFB820300566A20 /* LanuchVC.swift */,
 				075B27302AEF831700403AC1 /* Info.plist */,
 			);
 			path = DefiAPP;
@@ -230,11 +266,9 @@
 		075B27522AEF834800403AC1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				075B27282AEF831700403AC1 /* Login.storyboard */,
-				075B27532AEF89CA00403AC1 /* LoginVC.swift */,
-				075B27672AF21DF700403AC1 /* LoginViewModel.swift */,
-				075B27692AF21EB900403AC1 /* LoginModel.swift */,
-				075B276D2AF250A900403AC1 /* ForgotVC.swift */,
+				074A8C8D2AFB380000566A20 /* ViewModel */,
+				074A8C8C2AFB37F600566A20 /* Model */,
+				074A8C8B2AFB37EC00566A20 /* View */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -286,6 +320,8 @@
 				0765AA1F2AFA3858000C0FFC /* SettingView.xib */,
 				0765AA252AFA41F3000C0FFC /* ReferralView.swift */,
 				0765AA232AFA41E5000C0FFC /* ReferralView.xib */,
+				074A8C902AFB871F00566A20 /* MemberViewModel.swift */,
+				074A8C922AFB875500566A20 /* MemberModel.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -508,6 +544,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				075B27612AF1EFA100403AC1 /* NetworkManager.swift in Sources */,
+				074A8C8A2AFB37E400566A20 /* RegisterVC.swift in Sources */,
 				075B275C2AEFA4FC00403AC1 /* UIColorEx.swift in Sources */,
 				0765AA1C2AFA2CAA000C0FFC /* MemberView.swift in Sources */,
 				07C2DBC12AF3783D003F7160 /* WalletNoticeCell.swift in Sources */,
@@ -517,6 +554,7 @@
 				075B276C2AF22A3300403AC1 /* StringEx.swift in Sources */,
 				075B27572AEF8DEC00403AC1 /* StoryBoardEx.swift in Sources */,
 				0765AA1A2AFA1061000C0FFC /* AccountVC.swift in Sources */,
+				074A8C912AFB871F00566A20 /* MemberViewModel.swift in Sources */,
 				07CBAFBF2AF8CBA4002978E9 /* DetailView.swift in Sources */,
 				07C2DBCE2AF399B0003F7160 /* PurchaseModel.swift in Sources */,
 				075B276E2AF250A900403AC1 /* ForgotVC.swift in Sources */,
@@ -532,9 +570,11 @@
 				07C2DBB92AF348C6003F7160 /* PurchaseVC.swift in Sources */,
 				076663C62AF494DC00F6AF44 /* PurchaseDetailVC.swift in Sources */,
 				075B275A2AEFA45600403AC1 /* CustomNextButton.swift in Sources */,
+				074A8C932AFB875500566A20 /* MemberModel.swift in Sources */,
 				07C2DBC92AF3895E003F7160 /* ProductCell.swift in Sources */,
 				0713D97B2AF8E2C90047423E /* WalletVC.swift in Sources */,
 				075B27642AF2023E00403AC1 /* Global.swift in Sources */,
+				074A8C8F2AFB820300566A20 /* LanuchVC.swift in Sources */,
 				0765AA222AFA386C000C0FFC /* SettingView.swift in Sources */,
 				075B275E2AEFBFEB00403AC1 /* UIButttonEx.swift in Sources */,
 			);
@@ -724,7 +764,7 @@
 				INFOPLIST_FILE = DefiAPP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = TabBar;
+				INFOPLIST_KEY_UIMainStoryboardFile = Login;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -755,7 +795,7 @@
 				INFOPLIST_FILE = DefiAPP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = TabBar;
+				INFOPLIST_KEY_UIMainStoryboardFile = Login;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

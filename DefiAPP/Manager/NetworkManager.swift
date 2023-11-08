@@ -85,10 +85,12 @@ class NetworkManager {
             if let token = UD.string(forKey: "token") {
                 return token
             }else {
+                GC.goLogout()
                 return ""
             }
         }else {
             //token過期登出
+            GC.goLogout()
             return ""
         }
     }
