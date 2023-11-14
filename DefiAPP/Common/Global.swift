@@ -14,5 +14,17 @@ let GC = GlobalFunc.shared
 
 let UD = UserDefaults.standard
 
+enum UserDefaultsKey: String {
+    case token
+    case expTime
+    case isKeepAccount
+    case keepAccount
+    case memberInfo
+    case faceID
+}
+
 let ScreenWidth = UIScreen.main.bounds.width
 let ScreenHeight = UIScreen.main.bounds.height
+
+typealias successClosure = (() -> ())?
+

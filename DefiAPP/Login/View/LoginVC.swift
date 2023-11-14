@@ -43,19 +43,22 @@ class LoginVC: UIViewController {
         nextButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         
         registerButton.addTarget(self, action: #selector(goRegister), for: .touchUpInside)
+        
+        nextButton.updateButton(isNext: false)
     }
     
     //MARK: - observe
     func observeEvent() {
-        loginViewModel.loginResult = { [weak self] result, message in
-            guard let self else { return }
+        loginViewModel.loginResult = {result, message in
             if result {
                 DispatchQueue.main.async {
                     GC.goMain()
                 }
                 print("login success")
             }else {
-                print(message)
+                DispatchQueue.main.async {
+                    CustomAlertView.shared.showMe(message: message)
+                }
             }
         }
         

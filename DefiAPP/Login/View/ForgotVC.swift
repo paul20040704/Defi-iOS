@@ -39,6 +39,8 @@ class ForgotVC: UIViewController {
         
         showButton.addTarget(self, action: #selector(passwordVisibleBtnClick(_:)), for: .touchUpInside)
         showConfirmButton.addTarget(self, action: #selector(passwordVisibleBtnClick(_:)), for: .touchUpInside)
+        
+        nextButton.updateButton(isNext: false)
     }
 
     @objc func validateFields() {

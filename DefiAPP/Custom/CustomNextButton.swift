@@ -11,11 +11,12 @@ class CustomNextButton: UIButton {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.tintColor = UIColor(hex: "#858A88")
-        self.backgroundColor = UIColor(hex: "#E6EBE8")
+        self.backgroundColor = UIColor(hex: "#42B883")
+        self.tintColor = UIColor(hex: "#FFFFFF")
+        //self.setTitleColor(UIColor(hex: "#FFFFFF"), for: .normal)
         //backgroundColor = UIColor(hex: "#42B883")
         self.titleLabel?.font = UIFont(name: "PingFangSC--Medium", size: 16)
-        self.isEnabled = false
+        //self.isEnabled = false
     }
 
     func updateButton(isNext: Bool) {

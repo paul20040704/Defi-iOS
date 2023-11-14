@@ -1,0 +1,20 @@
+PODS:
+  - IQKeyboardManagerSwift (6.5.16)
+  - PKHUD (5.3.0)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift
+  - PKHUD (~> 5.0)
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManagerSwift
+    - PKHUD
+
+SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+
+PODFILE CHECKSUM: 49a9016f9d0286112f656ea4d6ef925150cdf5ab
+
+COCOAPODS: 1.14.0

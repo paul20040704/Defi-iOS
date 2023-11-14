@@ -34,7 +34,7 @@ class TabBarController: UITabBarController {
     }
     
     func getToken() {
-        if let token = UD.string(forKey: "token") {
+        if let token = UD.string(forKey: UserDefaultsKey.token.rawValue) {
             print("token -- \(token)")
         }
     }

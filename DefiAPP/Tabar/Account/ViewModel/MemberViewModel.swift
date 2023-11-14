@@ -23,9 +23,15 @@ class MemberViewModel {
             switch result {
             case .success(let fetchData):
                 self.memeberInfo = fetchData.data
+                if let data = try? PropertyListEncoder().encode(fetchData.data) {
+                    UD.setValue(data, forKey: UserDefaultsKey.memberInfo.rawValue)
+                    print("memberInfo 更新")
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
+    
+    
 }

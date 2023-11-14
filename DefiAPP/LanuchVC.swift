@@ -17,10 +17,10 @@ class LanuchVC: UIViewController {
     }
     
     func judgeToken() {
-        let expTime = UD.integer(forKey: "expTime")
+        let expTime = UD.integer(forKey: UserDefaultsKey.expTime.rawValue)
         let nowTime = GC.getTimeInterval()
         if expTime > nowTime {
-            if let _ = UD.string(forKey: "token") {
+            if let _ = UD.string(forKey: UserDefaultsKey.token.rawValue) {
                 GC.goMain()
             }else {
                 GC.goLogin()

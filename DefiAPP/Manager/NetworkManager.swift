@@ -39,7 +39,7 @@ class NetworkManager {
                 if let urlWithQuery = components?.url {
                     request.url = urlWithQuery
                 }
-            }else if method == "POST" {
+            }else {
                 do {
                     let requestData = try JSONSerialization.data(withJSONObject: parameters)
                     request.httpBody = requestData
@@ -62,8 +62,11 @@ class NetworkManager {
             }
             
             if httpResponse.statusCode != 200 {
+                //print(String(data: data, encoding: .utf8))
                 if let apiError = try? JSONDecoder().decode(APIErrorModel.self, from: data) {
                     completion(.failure(.apiError(message: apiError.message ?? "api error")))
+                }else {
+                    completion(.failure(.apiError(message: "fetch errorData error")))
                 }
             }else {
                 do {
@@ -74,15 +77,14 @@ class NetworkManager {
                 }
             }
         }.resume()
-        
     }
     
     //取得Token判斷是否過期
     func getToken() -> String {
-        let expTime = UD.integer(forKey: "expTime")
+        let expTime = UD.integer(forKey: UserDefaultsKey.expTime.rawValue)
         let nowTime = GC.getTimeInterval()
         if expTime > nowTime {
-            if let token = UD.string(forKey: "token") {
+            if let token = UD.string(forKey: UserDefaultsKey.token.rawValue) {
                 return token
             }else {
                 GC.goLogout()
@@ -100,8 +102,9 @@ class NetworkManager {
 
 
 struct APIErrorModel: Codable {
-   let statusCode: Int?
-   let success: Bool
-   let message: String?
-   let timestamp: Int?
+    let errorId: String?
+    let statusCode: Int?
+    let success: Bool
+    let message: String?
+   //let timestamp: Int?
 }

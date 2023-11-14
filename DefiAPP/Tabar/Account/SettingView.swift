@@ -7,8 +7,12 @@
 
 import UIKit
 
-class SettingView: UIView {
+class SettingView: UIView, NibOwnerLoadable {
 
+    @IBOutlet weak var safetyButton: UIButton!
+    
+    var goSatetyClosure: (() ->())?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadXib()
@@ -20,16 +24,16 @@ class SettingView: UIView {
     }
     
     func loadXib() {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "SettingView", bundle: bundle)
-        let xibView = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        addSubview(xibView)
-        
-        xibView.translatesAutoresizingMaskIntoConstraints = false
-        xibView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        xibView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        xibView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        xibView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        loadNibContent()
+        commonInit()
     }
 
+    func commonInit() {
+        safetyButton.addTarget(self, action: #selector(goSatety), for: .touchUpInside)
+    }
+    
+    @objc func goSatety() {
+        self.goSatetyClosure?()
+    }
+    
 }

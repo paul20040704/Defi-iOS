@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ReferralView: UIView {
+class ReferralView: UIView, NibOwnerLoadable {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,16 +20,7 @@ class ReferralView: UIView {
     }
     
     func loadXib() {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "ReferralView", bundle: bundle)
-        let xibView = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        addSubview(xibView)
-        
-        xibView.translatesAutoresizingMaskIntoConstraints = false
-        xibView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        xibView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        xibView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        xibView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        loadNibContent()
     }
 
 }

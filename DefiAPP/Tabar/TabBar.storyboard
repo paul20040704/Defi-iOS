@@ -10,14 +10,15 @@
         <!--Navigation Controller-->
         <scene sceneID="ow8-w7-dJG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lo1-BG-bK1" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TabBarNavigation" automaticallyAdjustsScrollViewInsets="NO" id="lo1-BG-bK1" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bJM-mC-PX3">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.18431372549019609" green="0.2196078431372549" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="18"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="18"/>
+                            <color key="textColor" red="0.1803921568627451" green="0.20000000000000001" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

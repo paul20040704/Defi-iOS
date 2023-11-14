@@ -26,7 +26,6 @@ class HistoryVC: UIViewController {
         managementButton.addTarget(self, action: #selector(selectClick(_:)), for: .touchUpInside)
         historyButton.addTarget(self, action: #selector(selectClick(_:)), for: .touchUpInside)
         
-        nextButton.updateButton(isNext: true)
     }
 
     //MARK: - Action

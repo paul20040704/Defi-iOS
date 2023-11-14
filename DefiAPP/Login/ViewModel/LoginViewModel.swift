@@ -33,9 +33,9 @@ class LoginViewModel {
             switch result {
             case .success(let fetchData):
                 if let token = fetchData.data {
-                    UD.setValue(token, forKey: "token")
+                    UD.setValue(token, forKey: UserDefaultsKey.token.rawValue)
                     if let exp = GC.decodeToken(token: token) {
-                        UD.setValue(exp, forKey: "expTime")
+                        UD.setValue(exp, forKey: UserDefaultsKey.expTime.rawValue)
                     }
                     
                     if let email = loginInfo["email"] as? String {
@@ -61,19 +61,19 @@ class LoginViewModel {
     
     //登入後判斷是否記住email
     func loginJudgeKeepEmail(email: String) {
-        UD.setValue(isKeepAccount, forKey: "isKeepAccount")
+        UD.setValue(isKeepAccount, forKey: UserDefaultsKey.isKeepAccount.rawValue)
         if isKeepAccount {
-            UD.setValue(email, forKey: "keepAccount")
+            UD.setValue(email, forKey: UserDefaultsKey.keepAccount.rawValue)
         }else {
-            UD.removeObject(forKey: "keepAccount")
+            UD.removeObject(forKey: UserDefaultsKey.keepAccount.rawValue)
         }
     }
     
     //判斷是否記住帳號
     func judgeKeep() {
-        isKeepAccount = UD.bool(forKey: "isKeepAccount")
+        isKeepAccount = UD.bool(forKey: UserDefaultsKey.isKeepAccount.rawValue)
         if (isKeepAccount) {
-            if let account = UD.string(forKey: "keepAccount") {
+            if let account = UD.string(forKey: UserDefaultsKey.keepAccount.rawValue) {
                 keepAccount = account
             }
         }

@@ -25,7 +25,7 @@ class AccountVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.navigationController?.isNavigationBarHidden = false
         setUI()
     }
     
@@ -36,7 +36,6 @@ class AccountVC: UIViewController {
         setButton.addTarget(self, action: #selector(selectClick(_:)), for: .touchUpInside)
         referralButton.addTarget(self, action: #selector(selectClick(_:)), for: .touchUpInside)
         
-        memberView.commonInit()
         observeEvent()
     }
     
@@ -46,6 +45,12 @@ class AccountVC: UIViewController {
             DispatchQueue.main.async {
                 self.nameLabel.text = self.memberViewModel.memeberInfo.nickname ?? ""
             }
+        }
+        memberViewModel.getMemberInfo()
+        
+        settingView.goSatetyClosure = {
+            let safetyVC = UIStoryboard(name: "Account", bundle: nil).instantiateViewController(withIdentifier: "SafetyVC")
+            self.navigationController?.show(safetyVC, sender: nil)
         }
     }
 

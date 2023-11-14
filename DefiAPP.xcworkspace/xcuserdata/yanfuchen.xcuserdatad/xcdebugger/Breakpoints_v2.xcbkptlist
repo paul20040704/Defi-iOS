@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "562D166F-779B-41F6-B333-450F7012196F"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F0D3A96-5BD4-4794-8925-EA050926E18B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DefiAPP/Login/View/LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "observeEvent()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9F0D3A96-5BD4-4794-8925-EA050926E18B - 11dd171c4f2ca600"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.String) -&gt; () in DefiAPP.LoginVC.observeEvent() -&gt; ()"
+                  moduleName = "DefiAPP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanfuchen/DeFi-iOS/DefiAPP/Login/View/LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "976">
+               </Location>
+               <Location
+                  uuid = "9F0D3A96-5BD4-4794-8925-EA050926E18B - 988574cf91b5c0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Swift.MainActor () -&gt; () in closure #1 (Swift.Bool, Swift.String) -&gt; () in DefiAPP.LoginVC.observeEvent() -&gt; ()"
+                  moduleName = "DefiAPP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanfuchen/DeFi-iOS/DefiAPP/Login/View/LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "9F0D3A96-5BD4-4794-8925-EA050926E18B - 988574cf91b5c0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Swift.MainActor () -&gt; () in closure #1 (Swift.Bool, Swift.String) -&gt; () in DefiAPP.LoginVC.observeEvent() -&gt; ()"
+                  moduleName = "DefiAPP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanfuchen/DeFi-iOS/DefiAPP/Login/View/LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

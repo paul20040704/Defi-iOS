@@ -15,7 +15,7 @@ class GlobalFunc {
     private init() {}
     
     func goMain() {
-        let tabBar = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "TabBarController")
+        let tabBar = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "TabBarNavigation")
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first {
                 window.rootViewController = tabBar
@@ -33,8 +33,9 @@ class GlobalFunc {
     }
     
     func goLogout() {
-        UD.removeObject(forKey: "token")
-        UD.removeObject(forKey: "expTime")
+        UD.removeObject(forKey: UserDefaultsKey.token.rawValue)
+        UD.removeObject(forKey: UserDefaultsKey.expTime.rawValue)
+        UD.removeObject(forKey: UserDefaultsKey.memberInfo.rawValue)
         let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginVC")
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first {
@@ -73,6 +74,13 @@ class GlobalFunc {
         }
     }
     
+    //取得MemberInfo資訊
+    func getMemberInfo() -> MemberInfo? {
+        if let data = UD.data(forKey: UserDefaultsKey.memberInfo.rawValue), let member = try? PropertyListDecoder().decode(MemberInfo.self, from: data){
+            return member
+        }
+        return nil
+    }
     
 }
 

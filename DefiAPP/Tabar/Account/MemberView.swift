@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MemberView: UIView {
+class MemberView: UIView, NibOwnerLoadable {
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var logoutButton: CustomNextButton!
@@ -25,20 +25,11 @@ class MemberView: UIView {
     }
     
     func loadXib() {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "MemberView", bundle: bundle)
-        let xibView = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        addSubview(xibView)
-        
-        xibView.translatesAutoresizingMaskIntoConstraints = false
-        xibView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        xibView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-                xibView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-                xibView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        loadNibContent()
+        commonInit()
     }
     
     func commonInit() {
-        logoutButton.updateButton(isNext: true)
         logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
         
         observeEvent()
@@ -52,11 +43,14 @@ class MemberView: UIView {
                 self.emailLabel.text = self.viewModel.memeberInfo.email ?? ""
             }
         }
-        
         viewModel.getMemberInfo()
     }
     
     @objc func logout() {
-        GC.goLogout()
+        SelectAlertView.shared.showInView(message: "是否確定要登出？", okAction: {
+            GC.goLogout()
+        })
     }
+    
+    
 }

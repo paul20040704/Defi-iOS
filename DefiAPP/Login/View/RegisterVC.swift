@@ -38,6 +38,7 @@ class RegisterVC: UIViewController {
         showConfirmButton.addTarget(self, action: #selector(passwordVisibleBtnClick(_:)), for: .touchUpInside)
         
         nextButton.addTarget(self, action: #selector(registerClick), for: .touchUpInside)
+        nextButton.updateButton(isNext: false)
     }
     
     func observeEvent() {
@@ -50,6 +51,9 @@ class RegisterVC: UIViewController {
                     }
                 }
             }else {
+                DispatchQueue.main.async {
+                    CustomAlertView.shared.showMe(message: message)
+                }
                 print(message)
             }
         }
