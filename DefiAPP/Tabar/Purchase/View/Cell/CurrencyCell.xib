@@ -91,6 +91,11 @@
                             <constraint firstAttribute="height" constant="50" id="HqU-J2-ypl"/>
                             <constraint firstItem="eG2-Cy-Xaj" firstAttribute="centerY" secondItem="X7b-8n-1wA" secondAttribute="centerY" id="dR2-hO-aTJ"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>

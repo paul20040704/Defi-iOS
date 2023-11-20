@@ -31,6 +31,8 @@ class PurchaseDetailViewModel {
     
     var updateAmount: ((AmountType) -> ())?
     
+    var isPurchase: BoolClosure?
+    
     init(productData: ProductData) {
         self.productData = productData
     }
@@ -52,6 +54,13 @@ class PurchaseDetailViewModel {
             return everyMonth.formatted(.number.precision(.fractionLength(0...3))) + " USDT/月"
         }else {
             return "3個月共 " + everySeason.formatted(.number.precision(.fractionLength(0...3))) + " USDT"
+        }
+    }
+    
+    //申購
+    func canPurchase() {
+        if let memberInfo = GC.getMemberInfo() {
+            self.isPurchase?(memberInfo.isGaEnabled)
         }
     }
     

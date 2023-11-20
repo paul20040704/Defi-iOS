@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class AccountVC: UIViewController {
     
@@ -25,8 +26,11 @@ class AccountVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.isNavigationBarHidden = false
         setUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.memberViewModel.getMemberInfo()
     }
     
     func setUI() {
@@ -40,13 +44,25 @@ class AccountVC: UIViewController {
     }
     
     func observeEvent() {
+        HUD.show(.systemActivity, onView: self.view)
+        
         memberViewModel.infoBindClosure = { [weak self] in
             guard let self else { return }
             DispatchQueue.main.async {
+                HUD.hide()
                 self.nameLabel.text = self.memberViewModel.memeberInfo.nickname ?? ""
+                self.memberView.userLabel.text = self.memberViewModel.memeberInfo.nickname ?? ""
+                self.memberView.emailLabel.text = self.memberViewModel.memeberInfo.email ?? ""
             }
         }
         memberViewModel.getMemberInfo()
+        
+        memberView.changeUserClosure = { [weak self] in
+            guard let self else { return }
+            let changeNameVC = UIStoryboard(name: "Account", bundle: nil).instantiateViewController(withIdentifier: "ChangeNameVC") as! ChangeNameVC
+            changeNameVC.userName = self.memberViewModel.memeberInfo.nickname ?? ""
+            self.navigationController?.show(changeNameVC, sender: nil)
+        }
         
         settingView.goSatetyClosure = {
             let safetyVC = UIStoryboard(name: "Account", bundle: nil).instantiateViewController(withIdentifier: "SafetyVC")

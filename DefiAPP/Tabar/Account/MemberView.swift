@@ -10,9 +10,13 @@ import UIKit
 class MemberView: UIView, NibOwnerLoadable {
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    
+    @IBOutlet weak var userButton: UIButton!
     @IBOutlet weak var logoutButton: CustomNextButton!
     
     let viewModel = MemberViewModel()
+    
+    var changeUserClosure: VoidClosure?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,20 +34,12 @@ class MemberView: UIView, NibOwnerLoadable {
     }
     
     func commonInit() {
+        userButton.addTarget(self, action: #selector(changeClick), for: .touchUpInside)
         logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
-        
-        observeEvent()
     }
     
-    func observeEvent() {
-        viewModel.infoBindClosure = { [weak self] in
-            guard let self else { return }
-            DispatchQueue.main.async {
-                self.userLabel.text = self.viewModel.memeberInfo.nickname ?? ""
-                self.emailLabel.text = self.viewModel.memeberInfo.email ?? ""
-            }
-        }
-        viewModel.getMemberInfo()
+    @objc func changeClick() {
+        self.changeUserClosure?()
     }
     
     @objc func logout() {

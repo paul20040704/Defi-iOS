@@ -43,9 +43,15 @@ final class DefiAPPTests: XCTestCase {
         XCTAssertTrue("Aa12345".validatePassword())
     }
     
+    func testTimeStr() throws {
+    
+        let result = "2024-05-31T23:59:00".timeStrConvert()
+        XCTAssertEqual(result, "2024-05-31")
+    }
+    
     //測試預期收到
     func testExpect() throws {
-        let product = ProductData(id: "", apr: 10, asset: "", chain: "", lDs: 0, maximumAmount: 2000, minumumAmount: 10000, period: Period(length: 0, unit: ""), subscriptionEndDate: "", subscriptionStartDate: "", hasBegun: true, hasEnded: true, isPurchaseable: true, isExpired: true)
+        let product = ProductData(id: "", apr: 10, asset: "", chain: "", lDs: 0, maximumAmount: 2000, minumumAmount: 10000, title: "", content: "", period: Period(length: 0, unit: ""), subscriptionEndDate: "", subscriptionStartDate: "", hasBegun: true, hasEnded: true, isPurchaseable: true, isExpired: true)
         let viewModel = PurchaseDetailViewModel(productData: product)
         viewModel.amount = 2000
         let result = viewModel.expectAmount(monthType: 0)

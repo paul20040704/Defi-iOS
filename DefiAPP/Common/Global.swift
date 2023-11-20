@@ -26,5 +26,7 @@ enum UserDefaultsKey: String {
 let ScreenWidth = UIScreen.main.bounds.width
 let ScreenHeight = UIScreen.main.bounds.height
 
-typealias successClosure = (() -> ())?
-
+typealias VoidClosure = () -> ()
+typealias BoolClosure = (Bool) -> ()
+typealias StringClosure = (String) -> ()
+typealias MessageClosure = (_ result: Bool,_ message: String) ->()

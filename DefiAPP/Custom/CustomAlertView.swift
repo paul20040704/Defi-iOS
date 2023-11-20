@@ -13,6 +13,7 @@ class CustomAlertView: UIView {
     
     @IBOutlet var parentView: UIView!
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nextButton: CustomNextButton!
     @IBOutlet weak var textView: UITextView!
     
@@ -33,7 +34,8 @@ class CustomAlertView: UIView {
         nextButton.addTarget(self, action: #selector(nextClick), for: .touchUpInside)
     }
     
-    func showMe(message: String) {
+    func showMe(title: String = "出錯了",message: String) {
+        titleLabel.text = title
         textView.text = message
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first {

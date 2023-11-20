@@ -49,17 +49,17 @@ class TwoPauseVC: UIViewController {
     }
     
     //MARK: - action
-        @objc func validateFields() {
-            nextButton.updateButton(isNext: codeTextField.text?.count ?? 0 > 5)
+    @objc func validateFields() {
+        nextButton.updateButton(isNext: codeTextField.text?.count ?? 0 > 5)
+    }
+    
+    @objc func nextClick() {
+        if let memberInfo = GC.getMemberInfo() {
+            HUD.show(.systemActivity, onView: self.view)
+            let parameters: [String: Any] = ["userId": memberInfo.id ?? "", "verificationCode": codeTextField.text ?? "", "enabled": false]
+            viewModel.putGaEnable(paramates: parameters)
         }
-        
-        @objc func nextClick() {
-            if let memberInfo = GC.getMemberInfo() {
-                HUD.show(.systemActivity, onView: self.view)
-                let parameters : [String: Any] = ["userId": memberInfo.id ?? "", "verificationCode": codeTextField.text ?? "", "enabled": false]
-                viewModel.putGaEnable(paramates: parameters)
-            }
-        }
+    }
         
 
 }

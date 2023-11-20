@@ -73,6 +73,13 @@ class GlobalFunc {
             return nil
         }
     }
+    //更新MemberInfo資訊
+    func updateMemberInfo(fetchData: MemberInfo) {
+        if let data = try? PropertyListEncoder().encode(fetchData) {
+            UD.setValue(data, forKey: UserDefaultsKey.memberInfo.rawValue)
+            print("memberInfo 更新")
+        }
+    }
     
     //取得MemberInfo資訊
     func getMemberInfo() -> MemberInfo? {

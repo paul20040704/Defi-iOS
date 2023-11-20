@@ -19,6 +19,8 @@ struct ProductData: Codable {
     let lDs: Int?
     let maximumAmount: Int?
     let minumumAmount: Int?
+    let title: String?
+    let content: String?
     let period: Period
     let subscriptionEndDate: String?
     let subscriptionStartDate: String?

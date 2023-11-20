@@ -9,7 +9,8 @@ import Foundation
 
 class SafetyViewModel {
     
-    var updateSwitch: ((Bool) ->())?
+    var updateSwitch: BoolClosure?
+    var changePwClosure: MessageClosure?
     
     //判斷是否開啟FaceId
     func getFaceID() {
@@ -23,6 +24,28 @@ class SafetyViewModel {
         UD.setValue(!isFaceIdOpen, forKey: UserDefaultsKey.faceID.rawValue)
     }
     
+    //變更使用者密碼
+    func changPassword(paramates: [String: Any]) {
+        NS.fetchData(urlStr: "v1/User/password", method: "PUT", parameters: paramates, isToken: true) { (result: Result<MemberModel, APIError>) in
+            switch result {
+            case .success(let fetchData):
+                //成功並更新MemberInfo
+                GC.updateMemberInfo(fetchData: fetchData.data)
+                self.changePwClosure?(true, "Success")
+            case .failure(let error):
+                var errorMessage = "fail"
+                switch error {
+                case .networkError(let error):
+                    errorMessage = error.localizedDescription
+                case .invalidStatusCode(_, let string):
+                    errorMessage = string
+                case .apiError(let message):
+                    errorMessage = message
+                }
+                self.changePwClosure?(false, errorMessage)
+            }
+        }
+    }
     
     
 }

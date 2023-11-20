@@ -26,6 +26,8 @@ class NetworkManager {
         
         var request = URLRequest(url: url)
         request.httpMethod = method
+        
+        request.setValue("zh-TW", forHTTPHeaderField: "Accept-Language")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         if isToken {

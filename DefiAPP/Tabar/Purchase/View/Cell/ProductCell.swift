@@ -9,6 +9,7 @@ import UIKit
 
 class ProductCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var highestLabel: UILabel!
     @IBOutlet weak var aprLabel: UILabel!
     @IBOutlet weak var periodLabel: UILabel!
@@ -25,9 +26,10 @@ class ProductCell: UITableViewCell {
     }
     
     func setup(productData: ProductData) {
+        self.titleLabel.text = productData.title ?? ""
         self.highestLabel.text = "最高\(productData.apr ?? 0)%"
         self.aprLabel.text = "\(productData.apr ?? 0)"
-        self.periodLabel.text = "\(productData.period.length ?? 0)個月"
+        self.periodLabel.text = "期間 \(productData.period.length ?? 0) 個月"
     }
     
 }

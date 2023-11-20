@@ -12,7 +12,8 @@ class DetailView: UIView {
     @IBOutlet weak var minLabel: UILabel!
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
-    @IBOutlet weak var assetLabel: UILabel!
+    @IBOutlet weak var rewardLabel: UILabel!
+    @IBOutlet weak var chainLabel: UILabel!
     @IBOutlet weak var maxLabel: UILabel!
     
     var productData: ProductData? {
@@ -20,7 +21,8 @@ class DetailView: UIView {
             self.minLabel.text = "\(productData?.minumumAmount ?? 0) USDT"
             self.startDateLabel.text = productData?.subscriptionStartDate ?? ""
             self.endDateLabel.text = productData?.subscriptionEndDate ?? ""
-            self.assetLabel.text = productData?.asset ?? ""
+            self.rewardLabel.text = productData?.asset ?? ""
+            self.chainLabel.text = productData?.chain ?? ""
             self.maxLabel.text = "\(productData?.maximumAmount ?? 0) USDT"
         }
     }

@@ -11,7 +11,7 @@ class SettingView: UIView, NibOwnerLoadable {
 
     @IBOutlet weak var safetyButton: UIButton!
     
-    var goSatetyClosure: (() ->())?
+    var goSatetyClosure: VoidClosure?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

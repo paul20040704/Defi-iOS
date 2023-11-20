@@ -29,6 +29,7 @@ class SafetyVC: UIViewController {
     func setUI() {
         twoFAButton.addTarget(self, action: #selector(goTwoFA), for: .touchUpInside)
         switchButton.addTarget(self, action: #selector(switchClick), for: .touchUpInside)
+        changePwButton.addTarget(self, action: #selector(goChangePassword), for: .touchUpInside)
     }
     
     func observeEvent() {
@@ -47,4 +48,11 @@ class SafetyVC: UIViewController {
     @objc func switchClick() {
         viewModel.switchFaceId()
     }
+    
+    @objc func goChangePassword() {
+        let changePasswordVC = UIStoryboard(name: "Account", bundle: nil).instantiateViewController(withIdentifier: "ChangePasswordVC")
+        self.navigationController?.show(changePasswordVC, sender: nil)
+    }
+    
+    
 }

@@ -1,28 +1,25 @@
 //
-//  SelectAlertView.swift
+//  TwofaAlertView.swift
 //  DefiAPP
 //
-//  Created by 彥甫陳 on 2023/11/9.
+//  Created by 彥甫陳 on 2023/11/16.
 //
 
 import UIKit
 
-class SelectAlertView: UIView, NibOwnerLoadable {
-    static let shared = SelectAlertView()
+class TwofaAlertView: UIView {
+    static let shared = TwofaAlertView()
     
     @IBOutlet var parentView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var contentLabel: UILabel!
-   
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var nextButton: CustomNextButton!
     
-    var okAction: VoidClosure?
-    //var cancelAction: (()->())?
+    var okAction: StringClosure?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        Bundle.main.loadNibNamed("SelectAlertView", owner: self)
+        Bundle.main.loadNibNamed("TwofaAlertView", owner: self)
         commonInit()
     }
     
@@ -33,16 +30,15 @@ class SelectAlertView: UIView, NibOwnerLoadable {
     func commonInit() {
         parentView.frame = CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight)
         parentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        confirmButton.addTarget(self, action: #selector(confirmClick), for: .touchUpInside)
+        codeTextField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         cancelButton.addTarget(self, action: #selector(cancelClick), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(confirmClick), for: .touchUpInside)
+        nextButton.updateButton(isNext: false)
     }
     
-    
-    func showInView(title: String = "你好", message: String, okAction: VoidClosure?) {
+    func showInView(okAction: StringClosure?) {
         self.okAction = okAction
-        //self.cancelAction = cancel
-        self.titleLabel.text = title
-        self.contentLabel.text = message
+        self.codeTextField.text = ""
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first {
                 window.addSubview(parentView)
@@ -50,15 +46,18 @@ class SelectAlertView: UIView, NibOwnerLoadable {
         }
     }
     
+    @objc func validateFields() {
+        nextButton.updateButton(isNext: codeTextField.text?.count ?? 0 > 0)
+    }
+    
     @objc func confirmClick() {
         parentView.removeFromSuperview()
-        self.okAction?()
+        self.okAction?(codeTextField.text ?? "")
     }
     
     @objc func cancelClick() {
         parentView.removeFromSuperview()
-        //self.cancelAction?()
     }
     
-    
+
 }

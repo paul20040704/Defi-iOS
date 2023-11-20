@@ -27,4 +27,20 @@ extension String {
         return passwordTest.evaluate(with: self)
     }
     
+    //轉換時間字串
+    func timeStrConvert() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        if let date = dateFormatter.date(from: self) {
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let currentTimeZone = TimeZone.current
+            dateFormatter.timeZone = currentTimeZone
+            
+            return dateFormatter.string(from: date)
+        }else {
+            return self
+        }
+    }
+    
 }

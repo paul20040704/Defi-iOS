@@ -9,8 +9,8 @@ import Foundation
 
 class LoginViewModel {
     
-    var loginResult: ((_ result: Bool,_ message: String) ->())?
-    var registerResult: ((_ result: Bool,_ message: String) ->())?
+    var loginResult: MessageClosure?
+    var registerResult: MessageClosure?
     
     var keepAccount: String = "" {
         didSet {
@@ -24,8 +24,8 @@ class LoginViewModel {
         }
     }
     
-    var updateKeepAccount: ((String) -> ())?
-    var updateKeepButton: ((Bool) -> ())?
+    var updateKeepAccount: StringClosure?
+    var updateKeepButton: BoolClosure?
     
     func login(loginInfo: [String: Any]) {
         NS.fetchData(urlStr: "v1/User/login", method: "POST", parameters: loginInfo, isToken: false) {(result: Result<LoginData, APIError>)  in
@@ -45,16 +45,18 @@ class LoginViewModel {
                     self.loginResult?(true, "success")
                 }
             case .failure(let error):
-                var errorMessage = "fail"
                 switch error {
                 case .networkError(let error):
-                    errorMessage = error.localizedDescription
+                    self.loginResult?(false, error.localizedDescription)
                 case .invalidStatusCode(_, let string):
-                    errorMessage = string
+                    self.loginResult?(false, string)
                 case .apiError(let message):
-                    errorMessage = message
+                    if (message == "2FA verification code is required") {
+                        self.loginResult?(true, "goTwofa")
+                    }else {
+                        self.loginResult?(false, message)
+                    }
                 }
-                self.loginResult?(false, errorMessage)
             }
         }
     }

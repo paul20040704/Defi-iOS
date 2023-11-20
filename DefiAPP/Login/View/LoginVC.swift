@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class LoginVC: UIViewController {
     
@@ -34,9 +35,6 @@ class LoginVC: UIViewController {
         emailTextField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        
         showPasswordButton.addTarget(self, action: #selector(passwordVisibleBtnClick(_:)), for: .touchUpInside)
         keepButton.addTarget(self, action: #selector(keepAccountClick(_:)), for: .touchUpInside)
         forgotButton.addTarget(self, action: #selector(goForgot), for: .touchUpInside)
@@ -49,14 +47,19 @@ class LoginVC: UIViewController {
     
     //MARK: - observe
     func observeEvent() {
-        loginViewModel.loginResult = {result, message in
-            if result {
-                DispatchQueue.main.async {
-                    GC.goMain()
-                }
-                print("login success")
-            }else {
-                DispatchQueue.main.async {
+        loginViewModel.loginResult = {[weak self] result, message in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                HUD.hide()
+                if result {
+                    if message == "goTwofa" {
+                        TwofaAlertView.shared.showInView { code in
+                            self.loginWithCode(code: code)
+                        }
+                    }else {
+                        GC.goMain()
+                    }
+                }else {
                     CustomAlertView.shared.showMe(message: message)
                 }
             }
@@ -76,7 +79,8 @@ class LoginVC: UIViewController {
         
         loginViewModel.judgeKeep()
     }
-    
+   
+    //MARK: - action
     @objc func validateFields() {
         let isEmailValid = emailTextField.text?.validateEmail() ?? false
         let isPasswordValid = passwordTextField.text?.validatePassword() ?? false
@@ -104,6 +108,7 @@ class LoginVC: UIViewController {
     @objc func login() {
         let parameters : [String: Any] = ["email": emailTextField.text ?? "", "password": passwordTextField.text ?? ""]
         loginViewModel.login(loginInfo: parameters)
+        HUD.show(.systemActivity, onView: self.view)
     }
     
     @objc func goRegister() {
@@ -111,13 +116,12 @@ class LoginVC: UIViewController {
         self.navigationController?.show(registerVC, sender: nil)
     }
     
-
-}
-
-
-extension LoginVC: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    func loginWithCode(code: String) {
+        let parameters : [String: Any] = ["email": emailTextField.text ?? "", "password": passwordTextField.text ?? "", "verificationCode": code]
+        loginViewModel.login(loginInfo: parameters)
+        HUD.show(.systemActivity, onView: self.view)
     }
+    
+
 }
+

@@ -15,10 +15,10 @@ class PurachaseViewModel {
         }
     }
     
-    var updateProductView: (() ->())?
+    var updateProductView: VoidClosure?
     
     func getProduct() {
-        NS.fetchData(urlStr: "v1/Product/all/purchaseable", method: "GET", isToken: false) { (result : Result<ProductModel, APIError>) in
+        NS.fetchData(urlStr: "v1/Product/all/purchaseable", method: "GET", isToken: false) { (result: Result<ProductModel, APIError>) in
             switch result{
             case .success(let fetchData):
                 self.productModel = fetchData

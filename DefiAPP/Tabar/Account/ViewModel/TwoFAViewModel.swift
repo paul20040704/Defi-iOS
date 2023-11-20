@@ -15,11 +15,11 @@ class TwoFAViewModel {
         }
     }
     
-    var updateSwitch: ((Bool) ->())?
+    var updateSwitch: BoolClosure?
     
-    var updateGaKey: (() ->())?
+    var updateGaKey: VoidClosure?
     
-    var putGaResult: ((_ result: Bool,_ message: String) ->())?
+    var putGaResult: MessageClosure?
     
     func getGaEnable() {
         if let memberInfo = GC.getMemberInfo() {
@@ -46,10 +46,7 @@ class TwoFAViewModel {
             switch result {
             case .success(let fetchData):
                 //成功並更新MemberInfo
-                if let data = try? PropertyListEncoder().encode(fetchData.data) {
-                    UD.setValue(data, forKey: UserDefaultsKey.memberInfo.rawValue)
-                    print("memberInfo 更新")
-                }
+                GC.updateMemberInfo(fetchData: fetchData.data)
                 self.putGaResult?(true, "")
             case .failure(let error):
                 var errorMessage = "fail"
@@ -67,19 +64,16 @@ class TwoFAViewModel {
     }
     
     //修改完後更新MemberInfo
-    func getMemberInfo() {
-        NS.fetchData(urlStr: "v1/User", method: "GET", isToken: true) { (result: Result<MemberModel, APIError>)  in
-            switch result {
-            case .success(let fetchData):
-                if let data = try? PropertyListEncoder().encode(fetchData.data) {
-                    UD.setValue(data, forKey: UserDefaultsKey.memberInfo.rawValue)
-                    print("memberInfo 更新")
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
+//    func getMemberInfo() {
+//        NS.fetchData(urlStr: "v1/User", method: "GET", isToken: true) { (result: Result<MemberModel, APIError>)  in
+//            switch result {
+//            case .success(let fetchData):
+//                GC.updateMemberInfo(fetchData: fetchData.data)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
     
     
 }

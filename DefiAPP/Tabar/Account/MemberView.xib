@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="emailLabel" destination="vPk-8v-FzO" id="ppg-6I-12d"/>
                 <outlet property="logoutButton" destination="Q8l-ef-faw" id="EOt-KF-w4p"/>
+                <outlet property="userButton" destination="9QC-y6-cP0" id="Xnl-UZ-zG7"/>
                 <outlet property="userLabel" destination="bgC-lR-BqP" id="IxH-Me-sh3"/>
             </connections>
         </placeholder>
