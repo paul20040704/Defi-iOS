@@ -25,4 +25,17 @@ struct MemberInfo: Codable {
     var isGaEnabled: Bool = false
     var isSuspended: Bool = false
     var refererId: String? = nil
+    var wallets: [WalletData]? = []
+}
+
+struct WalletData: Codable {
+    let createdBy: String?
+    let createdAt: String?
+    let id: Int?
+    let address: String?
+    let chain: String?
+    let ethWebhookId: String?
+    let isDeprecated: Bool
+    let revision: Int
+    let userId: String?
 }

@@ -14,8 +14,6 @@ class MemberView: UIView, NibOwnerLoadable {
     @IBOutlet weak var userButton: UIButton!
     @IBOutlet weak var logoutButton: CustomNextButton!
     
-    let viewModel = MemberViewModel()
-    
     var changeUserClosure: VoidClosure?
     
     override init(frame: CGRect) {

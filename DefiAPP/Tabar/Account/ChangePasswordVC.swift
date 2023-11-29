@@ -40,6 +40,19 @@ class ChangePasswordVC: UIViewController {
     }
 
     func observeEvent() {
+        viewModel.changePwClosure = { [weak self] result, message in
+            guard let self else { return }
+            DispatchQueue.main.sync {
+                if result {
+                    CustomAlertView.shared.showMe(title: "提醒", message: "密碼變更成功")
+                    if let vcArr = self.navigationController?.viewControllers {
+                        self.navigationController?.popToViewController(vcArr[0], animated: true)
+                    }
+                }else {
+                    CustomAlertView.shared.showMe(message: message)
+                }
+            }
+        }
     }
     
     //MARK: - action
@@ -64,6 +77,17 @@ class ChangePasswordVC: UIViewController {
     }
 
     @objc func nextClick() {
+        if let memberInfo = GC.getMemberInfo() {
+            var paramaters: [String: Any] = ["email": memberInfo.email ?? "", "password": passwordTextField.text ?? "" , "newPassword": newPasswordTextField.text ?? ""]
+            if memberInfo.isGaEnabled {
+                TwofaAlertView.shared.showInView { code in
+                    paramaters["verificationCode"] = code
+                    self.viewModel.changPassword(paramates: paramaters)
+                }
+            }else {
+                viewModel.changPassword(paramates: paramaters)
+            }
+        }
     }
 
 }

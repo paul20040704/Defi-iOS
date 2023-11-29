@@ -20,7 +20,7 @@ extension UIButton {
     //點擊按鈕改變外觀
     func changeLayer(isSelect: Bool) {
         let borderLayer = CALayer()
-        borderLayer.backgroundColor = isSelect ? UIColor(hex: "#42B883")?.cgColor : UIColor.white.cgColor
+        borderLayer.backgroundColor = isSelect ? UIColor(hex: "#42B883")?.cgColor : UIColor(hex: "E0E0E0")?.cgColor
         borderLayer.frame = CGRect(x: 0, y: self.frame.height - 2, width: self.frame.width, height: 2)
         self.layer.addSublayer(borderLayer)
         

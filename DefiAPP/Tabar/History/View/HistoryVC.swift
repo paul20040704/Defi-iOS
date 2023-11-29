@@ -39,6 +39,8 @@ class HistoryVC: UIViewController {
     
     func setUI() {
         managementButton.changeLayer(isSelect: true)
+        historyButton.changeLayer(isSelect: false)
+        
         managementButton.addTarget(self, action: #selector(selectClick(_:)), for: .touchUpInside)
         historyButton.addTarget(self, action: #selector(selectClick(_:)), for: .touchUpInside)
         nextButton.addTarget(self, action: #selector(nextClick), for: .touchUpInside)

@@ -117,9 +117,9 @@ class LoginVC: UIViewController {
     }
     
     func loginWithCode(code: String) {
+        HUD.show(.systemActivity, onView: self.view)
         let parameters : [String: Any] = ["email": emailTextField.text ?? "", "password": passwordTextField.text ?? "", "verificationCode": code]
         loginViewModel.login(loginInfo: parameters)
-        HUD.show(.systemActivity, onView: self.view)
     }
     
 

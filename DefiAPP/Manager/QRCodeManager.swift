@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class QRCodeManager {
+    //String轉QRcode
     static func generateQRCode(from string: String) -> UIImage? {
         guard let data = string.data(using: .ascii) else {
             return nil
