@@ -1167,6 +1167,7 @@
 				DEVELOPMENT_TEAM = 6393RP8623;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DefiAPP/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "是否開啟FaceID?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Login;
@@ -1199,6 +1200,7 @@
 				DEVELOPMENT_TEAM = 6393RP8623;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DefiAPP/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "是否開啟FaceID?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Login;

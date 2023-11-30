@@ -12,7 +12,8 @@ class MemberView: UIView, NibOwnerLoadable {
     @IBOutlet weak var emailLabel: UILabel!
     
     @IBOutlet weak var userButton: UIButton!
-    @IBOutlet weak var logoutButton: CustomNextButton!
+    
+    @IBOutlet weak var logoutButton: UIButton!
     
     var changeUserClosure: VoidClosure?
     

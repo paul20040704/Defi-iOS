@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MemberView" customModule="DefiAPP" customModuleProvider="target">
             <connections>
                 <outlet property="emailLabel" destination="vPk-8v-FzO" id="ppg-6I-12d"/>
-                <outlet property="logoutButton" destination="Q8l-ef-faw" id="EOt-KF-w4p"/>
+                <outlet property="logoutButton" destination="Q8l-ef-faw" id="otd-z8-0l7"/>
                 <outlet property="userButton" destination="9QC-y6-cP0" id="Xnl-UZ-zG7"/>
                 <outlet property="userLabel" destination="bgC-lR-BqP" id="IxH-Me-sh3"/>
             </connections>
@@ -143,16 +143,17 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8l-ef-faw" customClass="CustomNextButton" customModule="DefiAPP" customModuleProvider="target">
-                    <rect key="frame" x="25" y="486" width="343" height="50"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8l-ef-faw">
+                    <rect key="frame" x="25" y="496" width="343" height="40"/>
+                    <color key="backgroundColor" red="0.8980392157" green="0.36078431370000003" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="kgj-ma-xIk"/>
+                        <constraint firstAttribute="height" constant="40" id="kgj-ma-xIk"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" title="登出"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="25"/>
+                            <real key="value" value="10"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>

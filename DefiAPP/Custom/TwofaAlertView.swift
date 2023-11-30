@@ -51,8 +51,8 @@ class TwofaAlertView: UIView {
     }
     
     @objc func confirmClick() {
-        parentView.removeFromSuperview()
         self.okAction?(codeTextField.text ?? "")
+        parentView.removeFromSuperview()
     }
     
     @objc func cancelClick() {
