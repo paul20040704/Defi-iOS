@@ -9,15 +9,7 @@ import Foundation
 
 
 struct BalanceModel: Codable {
-    let data: [BalanceData]
-}
-
-struct BalanceData: Codable {
-    let userId: String?
-    let chain: String?
-    let asset: String?
-    let account: String?
-    let balance: Int?
+    let data: [WalletData]
 }
 
 struct ContractModel: Codable {

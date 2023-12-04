@@ -19,6 +19,7 @@ struct MemberInfo: Codable {
     var id: String? = nil
     var email: String? = nil
     var nickname: String? = nil
+    var isWalletConnect: Bool = false
     var isActivated: Bool = false
     var isEmailVerified: Bool = false
     var isAdmin: Bool = false
@@ -29,13 +30,15 @@ struct MemberInfo: Codable {
 }
 
 struct WalletData: Codable {
-    let createdBy: String?
-    let createdAt: String?
-    let id: Int?
-    let address: String?
+    let symbol: String?
+    let addresses: [AddressData]
+    let balance: Double?
+    let lockedBalance: Double
+}
+
+struct AddressData: Codable {
+    let `protocol`: String?
     let chain: String?
-    let ethWebhookId: String?
-    let isDeprecated: Bool
-    let revision: Int
-    let userId: String?
+    let asset: String?
+    let address: String?
 }

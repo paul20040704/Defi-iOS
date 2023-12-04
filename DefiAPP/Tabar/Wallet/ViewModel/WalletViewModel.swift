@@ -8,7 +8,8 @@
 import Foundation
 
 class WalletViewModel {
-    var balance: Int = 0 {
+    //資產資訊
+    var balanceData: WalletData? = nil {
         didSet {
             self.updateBalance?()
         }
@@ -19,7 +20,12 @@ class WalletViewModel {
             self.assetTypeClosure?()
         }
     }
-    //出金成功回傳
+    
+    //是否隱藏餘額
+    lazy var isHideBalance: Bool = {
+        return UD.bool(forKey: UserDefaultsKey.hideBalance.rawValue)
+    }()
+    
     var withdrawData: WithdrawData = WithdrawData()
     //帳本資訊
     var ledgerItems: [LedgerData] = [] {
@@ -44,8 +50,8 @@ class WalletViewModel {
             switch result {
             case .success(let fetchData):
                 if !(fetchData.data.isEmpty) {
-                    let filterData = fetchData.data.filter { $0.account == "Checking"}
-                    self.balance = filterData.first?.balance ?? 0
+                    let filterData = fetchData.data.filter { $0.symbol == "USDT"}
+                    self.balanceData = filterData.first ?? nil
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -104,6 +110,13 @@ class WalletViewModel {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    //點擊隱藏資產按鈕
+    func changeHideBalance() {
+        self.isHideBalance = !UD.bool(forKey: UserDefaultsKey.hideBalance.rawValue)
+        UD.setValue(self.isHideBalance, forKey: UserDefaultsKey.hideBalance.rawValue)
+        self.updateBalance?()
     }
     
 }

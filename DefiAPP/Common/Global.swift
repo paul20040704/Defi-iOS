@@ -21,6 +21,7 @@ enum UserDefaultsKey: String {
     case keepAccount
     case memberInfo
     case faceID
+    case hideBalance
 }
 
 let ScreenWidth = UIScreen.main.bounds.width

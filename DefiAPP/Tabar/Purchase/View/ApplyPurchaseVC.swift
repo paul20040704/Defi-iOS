@@ -70,7 +70,7 @@ class ApplyPurchaseVC: UIViewController {
                 HUD.hide()
                 if success {
                     let successView = PurchaseSuccessView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight))
-                    successView.setContent(endDate: message, amount: self.viewModel?.amount ?? 0)
+                    successView.setContent(endDate: message, amount: self.viewModel?.amount ?? 0.0)
                     successView.confirmClosure = {
                         if let vcArr = self.navigationController?.viewControllers {
                             self.navigationController?.popToViewController(vcArr[0], animated: true)

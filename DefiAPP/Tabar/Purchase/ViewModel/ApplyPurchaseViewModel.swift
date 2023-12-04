@@ -8,16 +8,16 @@
 import Foundation
 
 class ApplyPurchaseViewModel {
-    var balance: Int = 0 {
+    var balance: Double = 0 {
         didSet {
             self.availableBalance = self.countAvailableBalance()
         }
     }
     
-    let amount: Int
+    let amount: Double
     let productId: String
     
-    var availableBalance: Int = 0{
+    var availableBalance: Double = 0{
         didSet {
             self.updateClosure?()
         }
@@ -40,12 +40,12 @@ class ApplyPurchaseViewModel {
     var agreeClosure: BoolClosure?
     var purchaseClosure: MessageClosure?
     
-    init(amount: Int, productId: String) {
+    init(amount: Double, productId: String) {
         self.amount = amount
         self.productId = productId
     }
     
-    private func countAvailableBalance() -> Int{
+    private func countAvailableBalance() -> Double{
         return balance - amount
     }
     
@@ -55,7 +55,7 @@ class ApplyPurchaseViewModel {
             switch result {
             case .success(let fetchData):
                 if !(fetchData.data.isEmpty) {
-                    let filterData = fetchData.data.filter { $0.account == "Checking"}
+                    let filterData = fetchData.data.filter { $0.symbol == "USDT"}
                     self.balance = filterData.first?.balance ?? 0
                 }
             case .failure(let error):

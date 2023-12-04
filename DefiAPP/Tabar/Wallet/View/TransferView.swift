@@ -66,7 +66,7 @@ class TransferView: UIView, NibOwnerLoadable {
     @objc func observeTextField() {
         self.amount = Double(amountTextField.text ?? "0") ?? 0
         actuallyLabel.text = "\(self.amount) USDT"
-        if (Double(viewModel?.balance ?? 0) >= self.amount && idTextField.text?.count ?? 0 > 0)  {
+        if (Double(viewModel?.balanceData?.balance ?? 0) >= self.amount && idTextField.text?.count ?? 0 > 0)  {
             nextButton.updateButton(isNext: true)
         }else {
             nextButton.updateButton(isNext: false)
@@ -74,8 +74,8 @@ class TransferView: UIView, NibOwnerLoadable {
     }
     
     @objc func maxClick() {
-        amountTextField.text = "\(viewModel?.balance ?? 0)"
-        self.amount = Double(viewModel?.balance ?? 0)
+        amountTextField.text = "\(viewModel?.balanceData?.balance ?? 0)"
+        self.amount = Double(viewModel?.balanceData?.balance ?? 0)
         self.observeTextField()
     }
     

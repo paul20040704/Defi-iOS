@@ -17,7 +17,7 @@ class PurchaseDetailViewModel {
     
     let productData: ProductData
     
-    var amount: Int = 0 {
+    var amount: Double = 0 {
         didSet {
             if amount > (productData.maximumAmount ?? 0) {
                 self.updateAmount?(.max)

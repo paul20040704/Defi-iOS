@@ -17,8 +17,8 @@ struct ProductData: Codable {
     let asset: String?
     let chain: String?
     let lDs: Int?
-    let maximumAmount: Int?
-    let minumumAmount: Int?
+    let maximumAmount: Double?
+    let minumumAmount: Double?
     let title: String?
     let content: String?
     let period: Period

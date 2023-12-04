@@ -34,7 +34,7 @@ class PurchaseSuccessView: UIView, NibOwnerLoadable {
         nextButton.addTarget(self, action: #selector(nextClick), for: .touchUpInside)
     }
     
-    func setContent(endDate: String, amount: Int) {
+    func setContent(endDate: String, amount: Double) {
         endDateLabel.text = endDate
         amountLabel.text = "\(amount) USDT"
     }

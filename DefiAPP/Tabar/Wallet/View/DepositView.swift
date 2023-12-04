@@ -34,8 +34,8 @@ class DepositView: UIView, NibOwnerLoadable {
     
     func commonInit() {
         if let memeberInfo = GC.getMemberInfo() {
-            self.addressLabel.text = memeberInfo.wallets?[0].address ?? ""
-            self.qrcodeImage.image = QRCodeManager.generateQRCode(from: memeberInfo.wallets?[0].address ?? "")
+            self.addressLabel.text = memeberInfo.wallets?[0].addresses[0].address ?? ""
+            self.qrcodeImage.image = QRCodeManager.generateQRCode(from: memeberInfo.wallets?[0].addresses[0].address ?? "")
         }
         copyButton.addTarget(self, action: #selector(copyClick), for: .touchUpInside)
     }

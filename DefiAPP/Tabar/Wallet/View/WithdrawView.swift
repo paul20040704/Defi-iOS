@@ -101,7 +101,7 @@ class WithdrawView: UIView, NibOwnerLoadable {
     //MARK: - action
     @objc func observeTextField() {
         self.amount = Double(amountTextField.text ?? "0") ?? 0
-        if (Double(viewModel?.balance ?? 0) >= amount && amount >= viewModel?.assetTypeInfo.minimumWithdraw ?? 0 && amount <= viewModel?.assetTypeInfo.maximumWithdraw ?? 0 && addressTextField.text?.count ?? 0 > 0)  {
+        if (Double(viewModel?.balanceData?.balance ?? 0) >= amount && amount >= viewModel?.assetTypeInfo.minimumWithdraw ?? 0 && amount <= viewModel?.assetTypeInfo.maximumWithdraw ?? 0 && addressTextField.text?.count ?? 0 > 0)  {
             nextButton.updateButton(isNext: true)
         }else {
             nextButton.updateButton(isNext: false)
@@ -109,8 +109,8 @@ class WithdrawView: UIView, NibOwnerLoadable {
     }
     
     @objc func maxClick() {
-        amountTextField.text = "\(viewModel?.balance ?? 0)"
-        amount = Double(viewModel?.balance ?? 0)
+        amountTextField.text = "\(viewModel?.balanceData?.balance ?? 0)"
+        amount = Double(viewModel?.balanceData?.balance ?? 0)
         self.observeTextField()
     }
     

@@ -69,6 +69,7 @@ class LanuchVC: UIViewController {
                 }
             }else {
                 //不支持生物辨識
+                GC.goMain()
                 print(error?.localizedDescription ?? "生物辨識不可用")
             }
         }else {

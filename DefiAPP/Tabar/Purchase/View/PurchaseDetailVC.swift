@@ -126,7 +126,7 @@ class PurchaseDetailVC: UIViewController {
     }
     
     @objc func observeAmount() {
-        viewModel?.amount = Int(amountTextField.text ?? "0") ?? 0
+        viewModel?.amount = Double(amountTextField.text ?? "0") ?? 0
     }
     
     @objc func nextClick() {
