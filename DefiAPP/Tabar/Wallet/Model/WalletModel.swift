@@ -35,4 +35,39 @@ struct WithdrawData: Codable {
 }
 
 
+struct SwapModel: Codable {
+    let data: [SwapData]
+}
+
+struct SwapData: Codable {
+    let swapId: Int?
+    let fromCryptocurrencySymbol: String?
+    let fromCryptocurrencyDecimal: Int?
+    let fromCryptocurrencyBalance: Double?
+    let fromCryptocurrencyMinAmount: Double?
+    let fromCryptocurrencyMaxAmount: Double?
+    let toCryptocurrencySymbol: String?
+    let toCryptocurrencyDecimal: Int?
+    let toCryptocurrencyBalance: Double?
+    let toCryptocurrencyMinAmount: Double?
+    let toCryptocurrencyMaxAmount: Double?
+    let rate: Double?
+    let systemFeePercentage: Double?
+}
+
+struct SwapQuotationModel: Codable {
+    let data: SwapQuotationData
+}
+
+struct SwapQuotationData: Codable {
+    var swapId: Int? = nil
+    var swapQuotationId: String? = nil
+    var fromCryptocurrencySymbol: String? = nil
+    var fromCryptocurrencyAmount: Double? = nil
+    var toCryptocurrencySymbol: String? = nil
+    var toCryptocurrencyAmount: Double? = nil
+    var rate: Double? = nil
+    var systemFeePercentage: Double? = nil
+    var systemFee: Double? = nil
+}
 

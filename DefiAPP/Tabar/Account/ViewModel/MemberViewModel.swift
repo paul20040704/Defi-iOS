@@ -46,16 +46,7 @@ class MemberViewModel {
                 GC.updateMemberInfo(fetchData: fetchData.data)
                 self.changeUserClosure?(true, "Success")
             case .failure(let error):
-                var errorMessage = "fail"
-                switch error {
-                case .networkError(let error):
-                    errorMessage = error.localizedDescription
-                case .invalidStatusCode(_, let string):
-                    errorMessage = string
-                case .apiError(let message):
-                    errorMessage = message
-                }
-                self.changeUserClosure?(false, errorMessage)
+                self.changeUserClosure?(false, GC.resolveError(error: error))
             }
         }
     }

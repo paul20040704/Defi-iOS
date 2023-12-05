@@ -41,16 +41,7 @@ class HistoryDetailViewModel {
             case .success(let fetchData):
                 self.updateSwitch?(fetchData.data)
             case .failure(let error):
-                var errorMessage = "fail"
-                switch error {
-                case .networkError(let error):
-                    errorMessage = error.localizedDescription
-                case .invalidStatusCode(_, let string):
-                    errorMessage = string
-                case .apiError(let message):
-                    errorMessage = message
-                }
-                self.errorClosure?(errorMessage)
+                self.errorClosure?(GC.resolveError(error: error))
             }
         }
     }
@@ -61,16 +52,7 @@ class HistoryDetailViewModel {
             case .success(_):
                 self.revokeClosure?(true, "success")
             case .failure(let error):
-                var errorMessage = "fail"
-                switch error {
-                case .networkError(let error):
-                    errorMessage = error.localizedDescription
-                case .invalidStatusCode(_, let string):
-                    errorMessage = string
-                case .apiError(let message):
-                    errorMessage = message
-                }
-                self.revokeClosure?(false, errorMessage)
+                self.revokeClosure?(false, GC.resolveError(error: error))
             }
         }
     }

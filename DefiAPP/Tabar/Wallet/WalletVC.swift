@@ -11,11 +11,9 @@ class WalletVC: UIViewController {
 
     @IBOutlet weak var hideButton: UIButton!
     
-    @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var availableLabel: UILabel!
-    @IBOutlet weak var lockLabel: UILabel!
     @IBOutlet var selectionButttons: [UIButton]!
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var depositView: DepositView!
     @IBOutlet weak var withdrawView: WithdrawView!
     @IBOutlet weak var transferView: TransferView!
@@ -30,7 +28,10 @@ class WalletVC: UIViewController {
         // Do any additional setup after loading the view.
         setUI()
         observeEvent()
+        addNotification()
         setupSubView()
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,7 +49,6 @@ class WalletVC: UIViewController {
             button.changeLayer(isSelect: button.tag == 0)
             button.addTarget(self, action: #selector(selectClick(_:)), for: .touchUpInside)
         }
-        
     }
     
     func observeEvent() {
@@ -56,27 +56,26 @@ class WalletVC: UIViewController {
             guard let self else { return }
             DispatchQueue.main.async {
                 self.hideButton.setImage(UIImage(named: self.viewModel.isHideBalance ? "show" : "hide"), for: .normal)
-                self.balanceLabel.text = self.viewModel.isHideBalance ? "\((self.viewModel.balanceData?.balance ?? 0) + (self.viewModel.balanceData?.lockedBalance ?? 0))" : "***"
-                self.availableLabel.text = self.viewModel.isHideBalance ? "可用\(self.viewModel.balanceData?.balance ?? 0)" : "可用***"
-                self.lockLabel.text = self.viewModel.isHideBalance ? "鎖倉 \(self.viewModel.balanceData?.lockedBalance ?? 0)" : "鎖倉***"
+                self.collectionView.reloadData()
             }
         }
         viewModel.getBalance()
     }
     
+    func addNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(getBalance), name: .walletNotification, object: nil)
+    }
+    
     func setupSubView() {
+        self.viewModel.walletVC = self
+        
         depositView.viewModel = viewModel
         
         withdrawView.viewModel = viewModel
-        withdrawView.walletVC = self
-        //提現完成後
-        withdrawView.withdrawClosure = {
-            self.viewModel.getBalance()
-        }
+        
+        swapView.viewModel = viewModel
         
         transferView.viewModel = viewModel
-        transferView.walletVC = self
-        //內部轉帳完成後
         
         historyView.viewModel = viewModel
     }
@@ -109,6 +108,31 @@ class WalletVC: UIViewController {
         viewModel.changeHideBalance()
     }
     
+    @objc func getBalance() {
+        self.viewModel.getBalance()
+    }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
+}
+
+
+extension WalletVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.balanceDatas.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WalletCollectionCell", for: indexPath) as! WalletCollectionCell
+        cell.setup(data: viewModel.balanceDatas[indexPath.row], isHide: viewModel.isHideBalance)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let collectionWidth = collectionView.bounds.width
+        let cellWidth = collectionWidth - 50
+        return CGSize(width: cellWidth, height: collectionView.bounds.height)
+    }
 }

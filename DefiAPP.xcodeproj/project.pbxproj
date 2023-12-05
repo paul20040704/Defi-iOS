@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070E75FB2B1D7B390028FA84 /* WalletCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070E75FA2B1D7B390028FA84 /* WalletCollectionCell.swift */; };
 		0713D9792AF8E2B20047423E /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0713D9782AF8E2B20047423E /* Wallet.storyboard */; };
 		0713D97B2AF8E2C90047423E /* WalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0713D97A2AF8E2C90047423E /* WalletVC.swift */; };
 		0743BB482B01F42900585638 /* QRCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0743BB472B01F42900585638 /* QRCodeManager.swift */; };
@@ -76,6 +77,9 @@
 		0766AB942B15CDB6002BA661 /* WalletHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0766AB932B15CDB6002BA661 /* WalletHistoryModel.swift */; };
 		0766AB972B15D51A002BA661 /* WalletHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0766AB952B15D51A002BA661 /* WalletHistoryCell.swift */; };
 		0766AB982B15D51A002BA661 /* WalletHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0766AB962B15D51A002BA661 /* WalletHistoryCell.xib */; };
+		076BAD562B1EF11A00A088A1 /* SwapAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BAD552B1EF11A00A088A1 /* SwapAlertView.swift */; };
+		076BAD582B1EF12D00A088A1 /* SwapAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 076BAD572B1EF12D00A088A1 /* SwapAlertView.xib */; };
+		076BAD5A2B1F161800A088A1 /* NotificationEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BAD592B1F161800A088A1 /* NotificationEx.swift */; };
 		0770D7D32B0F03C2008BB4E5 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0770D7D22B0F03C2008BB4E5 /* DropDownView.swift */; };
 		077492A52B1861E80078DBCF /* SwapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077492A42B1861E80078DBCF /* SwapView.swift */; };
 		077492A72B1861F40078DBCF /* SwapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077492A62B1861F40078DBCF /* SwapView.xib */; };
@@ -130,6 +134,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		070E75FA2B1D7B390028FA84 /* WalletCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCollectionCell.swift; sourceTree = "<group>"; };
 		0713D9782AF8E2B20047423E /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		0713D97A2AF8E2C90047423E /* WalletVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVC.swift; sourceTree = "<group>"; };
 		0743BB472B01F42900585638 /* QRCodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeManager.swift; sourceTree = "<group>"; };
@@ -203,6 +208,9 @@
 		0766AB932B15CDB6002BA661 /* WalletHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletHistoryModel.swift; sourceTree = "<group>"; };
 		0766AB952B15D51A002BA661 /* WalletHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletHistoryCell.swift; sourceTree = "<group>"; };
 		0766AB962B15D51A002BA661 /* WalletHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletHistoryCell.xib; sourceTree = "<group>"; };
+		076BAD552B1EF11A00A088A1 /* SwapAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapAlertView.swift; sourceTree = "<group>"; };
+		076BAD572B1EF12D00A088A1 /* SwapAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwapAlertView.xib; sourceTree = "<group>"; };
+		076BAD592B1F161800A088A1 /* NotificationEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationEx.swift; sourceTree = "<group>"; };
 		0770D7D22B0F03C2008BB4E5 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		077492A42B1861E80078DBCF /* SwapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapView.swift; sourceTree = "<group>"; };
 		077492A62B1861F40078DBCF /* SwapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwapView.xib; sourceTree = "<group>"; };
@@ -273,6 +281,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		070E75F92B1D7AB50028FA84 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0766AB952B15D51A002BA661 /* WalletHistoryCell.swift */,
+				0766AB962B15D51A002BA661 /* WalletHistoryCell.xib */,
+				070E75FA2B1D7B390028FA84 /* WalletCollectionCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		0713D9762AF8E05C0047423E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +418,7 @@
 				075B276B2AF22A3300403AC1 /* StringEx.swift */,
 				074D81BA2AFDDB880025D054 /* NibOwnerLoadableEx.swift */,
 				075F07242B0DAF090072D7F6 /* DoubleEx.swift */,
+				076BAD592B1F161800A088A1 /* NotificationEx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -440,6 +459,7 @@
 		0763098D2B0C589B0080C5B5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				070E75F92B1D7AB50028FA84 /* Cell */,
 				0763098F2B0C59C70080C5B5 /* DepositView.xib */,
 				076309912B0C5B960080C5B5 /* DepositView.swift */,
 				076309932B0C86720080C5B5 /* WithdrawView.xib */,
@@ -452,8 +472,8 @@
 				077492A42B1861E80078DBCF /* SwapView.swift */,
 				075F07262B0DF3320072D7F6 /* WithdrawAlertView.xib */,
 				075F07282B0DF33D0072D7F6 /* WithdrawAlertView.swift */,
-				0766AB952B15D51A002BA661 /* WalletHistoryCell.swift */,
-				0766AB962B15D51A002BA661 /* WalletHistoryCell.xib */,
+				076BAD572B1EF12D00A088A1 /* SwapAlertView.xib */,
+				076BAD552B1EF11A00A088A1 /* SwapAlertView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -777,6 +797,7 @@
 				07C2DBB12AF260E5003F7160 /* TabBar.storyboard in Resources */,
 				07CBAFBD2AF8C4C9002978E9 /* DetailView.xib in Resources */,
 				075B272F2AEF831700403AC1 /* LaunchScreen.storyboard in Resources */,
+				076BAD582B1EF12D00A088A1 /* SwapAlertView.xib in Resources */,
 				075B272C2AEF831700403AC1 /* Assets.xcassets in Resources */,
 				075C2F522B070D330074ACD4 /* HistoryCell.xib in Resources */,
 				0765AA1E2AFA2CCF000C0FFC /* MemberView.xib in Resources */,
@@ -923,6 +944,7 @@
 				074A8C8A2AFB37E400566A20 /* RegisterVC.swift in Sources */,
 				075B275C2AEFA4FC00403AC1 /* UIColorEx.swift in Sources */,
 				0765AA1C2AFA2CAA000C0FFC /* MemberView.swift in Sources */,
+				076BAD562B1EF11A00A088A1 /* SwapAlertView.swift in Sources */,
 				07C2DBC12AF3783D003F7160 /* WalletNoticeCell.swift in Sources */,
 				0770D7D32B0F03C2008BB4E5 /* DropDownView.swift in Sources */,
 				074D81B92AFDD38A0025D054 /* SafetyVC.swift in Sources */,
@@ -941,6 +963,7 @@
 				0765AA1A2AFA1061000C0FFC /* AccountVC.swift in Sources */,
 				074A8C912AFB871F00566A20 /* MemberViewModel.swift in Sources */,
 				07CBAFBF2AF8CBA4002978E9 /* DetailView.swift in Sources */,
+				070E75FB2B1D7B390028FA84 /* WalletCollectionCell.swift in Sources */,
 				07C2DBCE2AF399B0003F7160 /* PurchaseModel.swift in Sources */,
 				075B276E2AF250A900403AC1 /* ForgotVC.swift in Sources */,
 				07B039FA2B062687000D562F /* HistoryModel.swift in Sources */,
@@ -978,6 +1001,7 @@
 				07C2DBC92AF3895E003F7160 /* ProductCell.swift in Sources */,
 				0713D97B2AF8E2C90047423E /* WalletVC.swift in Sources */,
 				074D81BD2AFE172D0025D054 /* SafetyViewModel.swift in Sources */,
+				076BAD5A2B1F161800A088A1 /* NotificationEx.swift in Sources */,
 				076546C42B049994006BD6FA /* ApplyPurchaseVC.swift in Sources */,
 				076309A12B0C91D00080C5B5 /* WalletViewModel.swift in Sources */,
 				075B27642AF2023E00403AC1 /* Global.swift in Sources */,

@@ -17,10 +17,6 @@ class TransferView: UIView, NibOwnerLoadable {
     @IBOutlet weak var actuallyLabel: UILabel!
     @IBOutlet weak var nextButton: CustomNextButton!
     
-    var walletVC: WalletVC?
-    
-    var transferClosure: VoidClosure?
-    
     var viewModel: WalletViewModel? {
         didSet {
             self.observeEvent()
@@ -59,14 +55,14 @@ class TransferView: UIView, NibOwnerLoadable {
     }
 
     func observeEvent() {
-        
+        NotificationCenter.default.post(name: .walletNotification, object: nil)
     }
     
     //MARK: - action
     @objc func observeTextField() {
         self.amount = Double(amountTextField.text ?? "0") ?? 0
         actuallyLabel.text = "\(self.amount) USDT"
-        if (Double(viewModel?.balanceData?.balance ?? 0) >= self.amount && idTextField.text?.count ?? 0 > 0)  {
+        if (Double(viewModel?.balanceDatas[0].balance ?? 0) >= self.amount && idTextField.text?.count ?? 0 > 0)  {
             nextButton.updateButton(isNext: true)
         }else {
             nextButton.updateButton(isNext: false)
@@ -74,8 +70,8 @@ class TransferView: UIView, NibOwnerLoadable {
     }
     
     @objc func maxClick() {
-        amountTextField.text = "\(viewModel?.balanceData?.balance ?? 0)"
-        self.amount = Double(viewModel?.balanceData?.balance ?? 0)
+        amountTextField.text = "\(viewModel?.balanceDatas[0].balance ?? 0)"
+        self.amount = Double(viewModel?.balanceDatas[0].balance ?? 0)
         self.observeTextField()
     }
     
@@ -91,7 +87,7 @@ class TransferView: UIView, NibOwnerLoadable {
                         HUD.show(.systemActivity, onView: self)
                     }
                 }
-                self.walletVC?.view.addSubview(withdrawAlertView)
+                self.viewModel?.walletVC?.view.addSubview(withdrawAlertView)
             }else {
                 CustomAlertView.shared.showMe(message: "未開啟兩步驟驗證。")
             }

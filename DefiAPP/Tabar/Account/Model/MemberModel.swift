@@ -33,7 +33,7 @@ struct WalletData: Codable {
     let symbol: String?
     let addresses: [AddressData]
     let balance: Double?
-    let lockedBalance: Double
+    let lockedBalance: Double?
 }
 
 struct AddressData: Codable {

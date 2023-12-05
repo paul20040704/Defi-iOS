@@ -71,16 +71,7 @@ class ApplyPurchaseViewModel {
             case .success(let fetchData):
                 self.purchaseClosure?(true, fetchData.data.endDate?.timeStrConvert() ?? "")
             case .failure(let error):
-                var errorMessage = "fail"
-                switch error {
-                case .networkError(let error):
-                    errorMessage = error.localizedDescription
-                case .invalidStatusCode(_, let string):
-                    errorMessage = string
-                case .apiError(let message):
-                    errorMessage = message
-                }
-                self.purchaseClosure?(false, errorMessage)
+                self.purchaseClosure?(false, GC.resolveError(error: error))
             }
         }
     }

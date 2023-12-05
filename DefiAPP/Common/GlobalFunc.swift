@@ -89,5 +89,18 @@ class GlobalFunc {
         return nil
     }
     
+    //解析錯誤訊息
+    func resolveError(error: APIError) -> String {
+        var errorMessage = "fail"
+        switch error {
+        case .networkError(let error):
+            errorMessage = error.localizedDescription
+        case .invalidStatusCode(_, let string):
+            errorMessage = string
+        case .apiError(let message):
+            errorMessage = message
+        }
+        return errorMessage
+    }
 }
 

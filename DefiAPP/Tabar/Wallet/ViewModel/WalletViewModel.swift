@@ -6,10 +6,11 @@
 //
 
 import Foundation
-
 class WalletViewModel {
+    var walletVC: WalletVC?
+    
     //資產資訊
-    var balanceData: WalletData? = nil {
+    var balanceDatas: [WalletData] = [] {
         didSet {
             self.updateBalance?()
         }
@@ -18,6 +19,15 @@ class WalletViewModel {
     var assetTypeInfo: AssetTypeData = AssetTypeData(withdrawFee: 0, minimumWithdraw: 0, maximumWithdraw: 0, explorerUrl: "") {
         didSet {
             self.assetTypeClosure?()
+        }
+    }
+    
+    //Swap資訊
+    var swapInfoDic: [String: SwapData] = [:]
+    //選擇的Swap
+    var fromSymbol: String = "USDT" {
+        didSet {
+            self.selectSwapClosure?()
         }
     }
     
@@ -34,6 +44,12 @@ class WalletViewModel {
         }
     }
     
+    var swapQuotationData: SwapQuotationData = SwapQuotationData() {
+        didSet {
+            self.swapQuotaionClosure?(true, "success")
+        }
+    }
+    
     var updateBalance: VoidClosure?
     //取得出金資訊回調
     var assetTypeClosure: VoidClosure?
@@ -43,6 +59,13 @@ class WalletViewModel {
     var transferClosure: MessageClosure?
     //用途取得帳本回調
     var ledgerClosure: VoidClosure?
+    //選擇From Swap回調
+    var selectSwapClosure: VoidClosure?
+    //取得Swap詳細資訊回調
+    var swapQuotaionClosure: MessageClosure?
+    //Swap成功回調
+    var swapClosure: MessageClosure?
+    
     
     //取得餘額
     func getBalance() {
@@ -50,8 +73,7 @@ class WalletViewModel {
             switch result {
             case .success(let fetchData):
                 if !(fetchData.data.isEmpty) {
-                    let filterData = fetchData.data.filter { $0.symbol == "USDT"}
-                    self.balanceData = filterData.first ?? nil
+                    self.balanceDatas = fetchData.data
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -78,16 +100,7 @@ class WalletViewModel {
                 self.withdrawData = fetchData.data
                 self.withdrawClosure?(true, "")
             case .failure(let error):
-                var errorMessage = "fail"
-                switch error {
-                case .networkError(let error):
-                    errorMessage = error.localizedDescription
-                case .invalidStatusCode(_, let string):
-                    errorMessage = string
-                case .apiError(let message):
-                    errorMessage = message
-                }
-                self.withdrawClosure?(false, errorMessage)
+                self.withdrawClosure?(false, GC.resolveError(error: error))
             }
         }
     }
@@ -117,6 +130,43 @@ class WalletViewModel {
         self.isHideBalance = !UD.bool(forKey: UserDefaultsKey.hideBalance.rawValue)
         UD.setValue(self.isHideBalance, forKey: UserDefaultsKey.hideBalance.rawValue)
         self.updateBalance?()
+    }
+    
+    //取得SwapInfo
+    func getSwapInfo() {
+        NS.fetchData(urlStr: "v1/Ledger/SwapInfo", method: "GET", isToken: true) { (result: Result<SwapModel, APIError>) in
+            switch result {
+            case .success(let fetchData):
+                for swapData in fetchData.data {
+                    self.swapInfoDic[swapData.fromCryptocurrencySymbol ?? ""] = swapData
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    //取得Swap詳細資訊
+    func getSwapQuotaion(paramaters: [String: Any]) {
+        NS.fetchData(urlStr: "v1/Ledger/swapquotation", method: "GET", parameters: paramaters, isToken: true) { (result: Result<SwapQuotationModel, APIError>) in
+            switch result {
+            case .success(let fetchData):
+                self.swapQuotationData = fetchData.data
+            case .failure(let error):
+                self.swapQuotaionClosure?(false, GC.resolveError(error: error))
+            }
+        }
+    }
+    
+    //Swap
+    func postSwap(paramaters: [String: Any]) {
+        NS.fetchData(urlStr: "v1/Ledger/swap", method: "POST", parameters: paramaters, isToken: true) { (result: Result<RenewModel, APIError>) in
+            switch result {
+            case .success(_):
+                self.swapClosure?(true, "")
+            case .failure(let error):
+                self.swapClosure?(false, GC.resolveError(error: error))
+            }
+        }
     }
     
 }

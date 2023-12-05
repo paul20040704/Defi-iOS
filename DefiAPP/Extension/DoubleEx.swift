@@ -13,4 +13,8 @@ extension Double {
         return (self * multiplier).rounded() / multiplier
     }
     
+    func countByRate(rate: Double, decimal: Int) -> Double {
+        let multiplier = pow(10.0, Double(decimal))
+        return (self * multiplier * rate).rounded() / multiplier
+    }
 }

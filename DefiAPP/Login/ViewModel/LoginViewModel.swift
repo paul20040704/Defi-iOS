@@ -89,16 +89,7 @@ class LoginViewModel {
             case .success(_):
                 self.registerResult?(true, "success")
             case .failure(let error):
-                var errorMessage = "fail"
-                switch error {
-                case .networkError(let error):
-                    errorMessage = error.localizedDescription
-                case .invalidStatusCode(_, let string):
-                    errorMessage = string
-                case .apiError(let message):
-                    errorMessage = message
-                }
-                self.registerResult?(false, errorMessage)
+                self.registerResult?(false, GC.resolveError(error: error))
             }
         }
     }

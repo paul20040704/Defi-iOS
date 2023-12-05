@@ -49,16 +49,7 @@ class TwoFAViewModel {
                 GC.updateMemberInfo(fetchData: fetchData.data)
                 self.putGaResult?(true, "")
             case .failure(let error):
-                var errorMessage = "fail"
-                switch error {
-                case .networkError(let error):
-                    errorMessage = error.localizedDescription
-                case .invalidStatusCode(_, let string):
-                    errorMessage = string
-                case .apiError(let message):
-                    errorMessage = message
-                }
-                self.putGaResult?(false, errorMessage)
+                self.putGaResult?(false, GC.resolveError(error: error))
             }
         }
     }

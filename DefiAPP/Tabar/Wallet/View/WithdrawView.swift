@@ -21,10 +21,6 @@ class WithdrawView: UIView, NibOwnerLoadable {
     
     @IBOutlet weak var nextButton: CustomNextButton!
     
-    var walletVC: WalletVC?
-    
-    var withdrawClosure: VoidClosure?
-    
     var viewModel: WalletViewModel? {
         didSet {
             self.observeEvent()
@@ -81,14 +77,13 @@ class WithdrawView: UIView, NibOwnerLoadable {
                     self.addressTextField.text = ""
                     self.amountTextField.text = ""
                     self.amount = 0
-                    self.withdrawClosure?()
                     self.nextButton.updateButton(isNext: false)
+                    NotificationCenter.default.post(name: .walletNotification, object: nil)
                 }else {
                     CustomAlertView.shared.showMe(message: message)
                 }
             }
         }
-        
     }
     
     //計算實際獲得金額
@@ -101,7 +96,7 @@ class WithdrawView: UIView, NibOwnerLoadable {
     //MARK: - action
     @objc func observeTextField() {
         self.amount = Double(amountTextField.text ?? "0") ?? 0
-        if (Double(viewModel?.balanceData?.balance ?? 0) >= amount && amount >= viewModel?.assetTypeInfo.minimumWithdraw ?? 0 && amount <= viewModel?.assetTypeInfo.maximumWithdraw ?? 0 && addressTextField.text?.count ?? 0 > 0)  {
+        if (Double(viewModel?.balanceDatas[0].balance ?? 0) >= amount && amount >= viewModel?.assetTypeInfo.minimumWithdraw ?? 0 && amount <= viewModel?.assetTypeInfo.maximumWithdraw ?? 0 && addressTextField.text?.count ?? 0 > 0)  {
             nextButton.updateButton(isNext: true)
         }else {
             nextButton.updateButton(isNext: false)
@@ -109,8 +104,8 @@ class WithdrawView: UIView, NibOwnerLoadable {
     }
     
     @objc func maxClick() {
-        amountTextField.text = "\(viewModel?.balanceData?.balance ?? 0)"
-        amount = Double(viewModel?.balanceData?.balance ?? 0)
+        amountTextField.text = "\(viewModel?.balanceDatas[0].balance ?? 0)"
+        amount = Double(viewModel?.balanceDatas[0].balance ?? 0)
         self.observeTextField()
     }
     
@@ -126,7 +121,7 @@ class WithdrawView: UIView, NibOwnerLoadable {
                         HUD.show(.systemActivity, onView: self)
                     }
                 }
-                self.walletVC?.view.addSubview(withdrawAlertView)
+                self.viewModel?.walletVC?.view.addSubview(withdrawAlertView)
             }else {
                 CustomAlertView.shared.showMe(message: "未開啟兩步驟驗證。")
             }
