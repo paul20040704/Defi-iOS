@@ -24,10 +24,10 @@ class GlobalFunc {
     }
     
     func goLogin() {
-        let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginVC")
+        let loginNavigaionC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginNavigation")
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first {
-                window.rootViewController = loginVC
+                window.rootViewController = loginNavigaionC
             }
         }
     }

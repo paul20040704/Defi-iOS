@@ -21,7 +21,6 @@ class HistoryVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         setUI()
         initTableView()
         observeEvent()
