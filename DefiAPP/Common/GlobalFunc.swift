@@ -33,10 +33,8 @@ class GlobalFunc {
     }
     
     func goLogout() {
-        UD.removeObject(forKey: UserDefaultsKey.token.rawValue)
-        UD.removeObject(forKey: UserDefaultsKey.expTime.rawValue)
-        UD.removeObject(forKey: UserDefaultsKey.memberInfo.rawValue)
-        let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginVC")
+        UserDefaultsManager.shared.logoutReset()
+        let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginNavigation")
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first {
                 window.rootViewController = loginVC
@@ -72,21 +70,6 @@ class GlobalFunc {
         }else {
             return nil
         }
-    }
-    //更新MemberInfo資訊
-    func updateMemberInfo(fetchData: MemberInfo) {
-        if let data = try? PropertyListEncoder().encode(fetchData) {
-            UD.setValue(data, forKey: UserDefaultsKey.memberInfo.rawValue)
-            print("memberInfo 更新")
-        }
-    }
-    
-    //取得MemberInfo資訊
-    func getMemberInfo() -> MemberInfo? {
-        if let data = UD.data(forKey: UserDefaultsKey.memberInfo.rawValue), let member = try? PropertyListDecoder().decode(MemberInfo.self, from: data){
-            return member
-        }
-        return nil
     }
     
     //解析錯誤訊息

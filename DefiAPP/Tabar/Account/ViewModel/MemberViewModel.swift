@@ -23,17 +23,10 @@ class MemberViewModel {
             switch result {
             case .success(let fetchData):
                 self.memeberInfo = fetchData.data
-                GC.updateMemberInfo(fetchData: fetchData.data)
+                UserDefaultsManager.shared.memberInfo = fetchData.data
             case .failure(let error):
                 print(error.localizedDescription)
             }
-        }
-    }
-    
-    //更新MemberInfo
-    func updateMemberInfo() {
-        if let memberInfo = GC.getMemberInfo() {
-            self.memeberInfo = memberInfo
         }
     }
     
@@ -43,7 +36,7 @@ class MemberViewModel {
             switch result {
             case .success(let fetchData):
                 //成功並更新MemberInfo
-                GC.updateMemberInfo(fetchData: fetchData.data)
+                UserDefaultsManager.shared.memberInfo = fetchData.data
                 self.changeUserClosure?(true, "Success")
             case .failure(let error):
                 self.changeUserClosure?(false, GC.resolveError(error: error))

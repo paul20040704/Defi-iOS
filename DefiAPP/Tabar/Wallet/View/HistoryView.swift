@@ -125,3 +125,5 @@ enum TransactionType: String, CaseIterable {
         return allCases.first { "\($0)" == description }?.rawValue ?? "找不到英文描述"
     }
 }
+
+

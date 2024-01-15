@@ -54,7 +54,7 @@ class TwoPauseVC: UIViewController {
     }
     
     @objc func nextClick() {
-        if let memberInfo = GC.getMemberInfo() {
+        if let memberInfo = UserDefaultsManager.shared.memberInfo {
             HUD.show(.systemActivity, onView: self.view)
             let parameters: [String: Any] = ["userId": memberInfo.id ?? "", "verificationCode": codeTextField.text ?? "", "enabled": false]
             viewModel.putGaEnable(paramates: parameters)

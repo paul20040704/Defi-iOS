@@ -18,10 +18,10 @@ class LanuchVC: UIViewController {
     }
     
     func judgeToken() {
-        let expTime = UD.integer(forKey: UserDefaultsKey.expTime.rawValue)
+        let expTime = UserDefaultsManager.shared.expTime
         let nowTime = GC.getTimeInterval()
         if expTime > nowTime {
-            if let _ = UD.string(forKey: UserDefaultsKey.token.rawValue) {
+            if let _ = UserDefaultsManager.shared.token {
                 judgeFaceId()
             }else {
                 GC.goLogin()
@@ -33,7 +33,7 @@ class LanuchVC: UIViewController {
     
     //判斷是否開啟FaceID
     func judgeFaceId() {
-        if (UD.bool(forKey: UserDefaultsKey.faceID.rawValue)) {
+        if (UserDefaultsManager.shared.isOpenFaceId) {
             let context = LAContext()
             var error: NSError?
             

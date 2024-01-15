@@ -15,7 +15,11 @@ class DepositView: UIView, NibOwnerLoadable {
     
     @IBOutlet weak var copyButton: UIButton!
     
-    var viewModel: WalletViewModel?
+    var viewModel: WalletViewModel? {
+        didSet {
+            self.updateAddress()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,11 +37,14 @@ class DepositView: UIView, NibOwnerLoadable {
     }
     
     func commonInit() {
-        if let memeberInfo = GC.getMemberInfo() {
-            self.addressLabel.text = memeberInfo.wallets?[0].addresses[0].address ?? ""
-            self.qrcodeImage.image = QRCodeManager.generateQRCode(from: memeberInfo.wallets?[0].addresses[0].address ?? "")
-        }
         copyButton.addTarget(self, action: #selector(copyClick), for: .touchUpInside)
+    }
+    
+    func updateAddress() {
+        DispatchQueue.main.async {
+            self.addressLabel.text = self.viewModel?.balanceDatas[0].addresses[0].address ?? ""
+            self.qrcodeImage.image = QRCodeManager.generateQRCode(from: self.viewModel?.balanceDatas[0].addresses[0].address ?? "")
+        }
     }
     
     @objc func copyClick() {

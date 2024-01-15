@@ -30,6 +30,7 @@ class SafetyVC: UIViewController {
         twoFAButton.addTarget(self, action: #selector(goTwoFA), for: .touchUpInside)
         switchButton.addTarget(self, action: #selector(switchClick), for: .touchUpInside)
         changePwButton.addTarget(self, action: #selector(goChangePassword), for: .touchUpInside)
+        self.switchButton.isOn = UserDefaultsManager.shared.isOpenFaceId
     }
     
     func observeEvent() {
@@ -37,7 +38,6 @@ class SafetyVC: UIViewController {
             guard let self else { return }
             self.switchButton.isOn = isOpen
         }
-        viewModel.getFaceID()
     }
     
     @objc func goTwoFA() {

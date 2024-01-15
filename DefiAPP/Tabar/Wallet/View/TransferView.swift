@@ -76,7 +76,7 @@ class TransferView: UIView, NibOwnerLoadable {
     }
     
     @objc func nextClick() {
-        if let memberInfo = GC.getMemberInfo() {
+        if let memberInfo = UserDefaultsManager.shared.memberInfo {
             if memberInfo.isGaEnabled {
                 let withdrawAlertView = WithdrawAlertView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight))
                 withdrawAlertView.setContent(address: idTextField.text ?? "", amount: amount, fee: 0)

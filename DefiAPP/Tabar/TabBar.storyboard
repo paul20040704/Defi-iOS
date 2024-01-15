@@ -10,7 +10,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ow8-w7-dJG">
             <objects>
-                <navigationController storyboardIdentifier="TabBarNavigation" automaticallyAdjustsScrollViewInsets="NO" id="lo1-BG-bK1" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TabBarNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lo1-BG-bK1" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bJM-mC-PX3">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -22,6 +22,9 @@
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="TabBarNavigation"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="Oqu-p3-BLn" kind="relationship" relationship="rootViewController" id="Vpa-so-HBK"/>
                     </connections>

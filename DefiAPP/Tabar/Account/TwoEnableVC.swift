@@ -76,7 +76,7 @@ class TwoEnableVC: UIViewController {
     }
     
     @objc func nextClick() {
-        if let memberInfo = GC.getMemberInfo() {
+        if let memberInfo = UserDefaultsManager.shared.memberInfo {
             HUD.show(.systemActivity, onView: self.view)
             let parameters : [String: Any] = ["userId": memberInfo.id ?? "", "verificationCode": codeTextField.text ?? "", "enabled": true]
             viewModel.putGaEnable(paramates: parameters)

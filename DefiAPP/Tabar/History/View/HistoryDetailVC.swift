@@ -94,7 +94,7 @@ class HistoryDetailVC: UIViewController {
     
     //MARK: - action
     @objc func autoClick() {
-        if let memberInfo = GC.getMemberInfo() {
+        if let memberInfo = UserDefaultsManager.shared.memberInfo {
             if memberInfo.isGaEnabled {
                 TwofaAlertView.shared.showInView { code in
                     let paramaters: [String: Any] = ["userId": memberInfo.id ?? "", "verificationCode": code, "contractId": self.viewModel?.itemsData.id ?? "", "enabled": !(self.autoSwitch.isOn)]
@@ -108,7 +108,7 @@ class HistoryDetailVC: UIViewController {
     }
     
     @objc func nextClick() {
-        if let memberInfo = GC.getMemberInfo() {
+        if let memberInfo = UserDefaultsManager.shared.memberInfo {
             if memberInfo.isGaEnabled {
                 SelectAlertView.shared.showInView(title: "是否確定解約？", message: "請參考解約手續費說明提前解約您將支付手續費  \(self.viewModel?.damageDouble ?? 0) USDT。") {
                     TwofaAlertView.shared.showInView { code in

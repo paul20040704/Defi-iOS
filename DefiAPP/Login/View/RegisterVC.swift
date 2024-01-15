@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class RegisterVC: UIViewController {
     
@@ -43,18 +44,18 @@ class RegisterVC: UIViewController {
     
     func observeEvent() {
         loginViewModel.registerResult = { result, message in
-            if result {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                HUD.hide()
+                if result {
                     //註冊成功
+                    CustomAlertView.shared.showMe(title: "提醒", message: "註冊成功，請到Eamil完成開通後登入。")
                     if let vcArr = self.navigationController?.viewControllers {
                         self.navigationController?.popToViewController(vcArr[0], animated: true)
                     }
-                }
-            }else {
-                DispatchQueue.main.async {
+                }else {
                     CustomAlertView.shared.showMe(message: message)
+                    print(message)
                 }
-                print(message)
             }
         }
     }
@@ -82,8 +83,8 @@ class RegisterVC: UIViewController {
     }
     
     @objc func registerClick() {
+        HUD.show(.systemActivity, onView: self.view)
         let parameters : [String: Any] = ["email": emailTextField.text ?? "", "password": passwordTextField.text ?? "", "refererId": referralTextField.text ?? ""]
-        
         loginViewModel.register(loginInfo: parameters)
     }
 

@@ -83,10 +83,10 @@ class NetworkManager {
     
     //取得Token判斷是否過期
     func getToken() -> String {
-        let expTime = UD.integer(forKey: UserDefaultsKey.expTime.rawValue)
+        let expTime = UserDefaultsManager.shared.expTime
         let nowTime = GC.getTimeInterval()
         if expTime > nowTime {
-            if let token = UD.string(forKey: UserDefaultsKey.token.rawValue) {
+            if let token = UserDefaultsManager.shared.token {
                 return token
             }else {
                 GC.goLogout()

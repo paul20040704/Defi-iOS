@@ -43,6 +43,7 @@ class ChangePasswordVC: UIViewController {
         viewModel.changePwClosure = { [weak self] result, message in
             guard let self else { return }
             DispatchQueue.main.sync {
+                HUD.hide()
                 if result {
                     CustomAlertView.shared.showMe(title: "提醒", message: "密碼變更成功")
                     if let vcArr = self.navigationController?.viewControllers {
@@ -77,7 +78,8 @@ class ChangePasswordVC: UIViewController {
     }
 
     @objc func nextClick() {
-        if let memberInfo = GC.getMemberInfo() {
+        if let memberInfo = UserDefaultsManager.shared.memberInfo {
+            HUD.show(.systemActivity, onView: self.view)
             var paramaters: [String: Any] = ["email": memberInfo.email ?? "", "password": passwordTextField.text ?? "" , "newPassword": newPasswordTextField.text ?? ""]
             if memberInfo.isGaEnabled {
                 TwofaAlertView.shared.showInView { code in

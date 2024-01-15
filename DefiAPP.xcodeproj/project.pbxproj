@@ -10,6 +10,7 @@
 		070E75FB2B1D7B390028FA84 /* WalletCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070E75FA2B1D7B390028FA84 /* WalletCollectionCell.swift */; };
 		0713D9792AF8E2B20047423E /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0713D9782AF8E2B20047423E /* Wallet.storyboard */; };
 		0713D97B2AF8E2C90047423E /* WalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0713D97A2AF8E2C90047423E /* WalletVC.swift */; };
+		073640AA2B317E7300043336 /* PurchaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073640A92B317E7300043336 /* PurchaseUITests.swift */; };
 		0743BB482B01F42900585638 /* QRCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0743BB472B01F42900585638 /* QRCodeManager.swift */; };
 		0743BB4A2B01F7F700585638 /* GaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0743BB492B01F7F700585638 /* GaModel.swift */; };
 		0743BB4C2B02288F00585638 /* TwoPauseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0743BB4B2B02288F00585638 /* TwoPauseVC.swift */; };
@@ -48,6 +49,7 @@
 		075C2F542B075ECD0074ACD4 /* HistoryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075C2F532B075ECD0074ACD4 /* HistoryDetailVC.swift */; };
 		075C2F562B075F0E0074ACD4 /* HistoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075C2F552B075F0E0074ACD4 /* HistoryDetailViewModel.swift */; };
 		075C2F582B0761B70074ACD4 /* HistoryDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075C2F572B0761B70074ACD4 /* HistoryDetailModel.swift */; };
+		075D55222B302DF5003FC16A /* XCUIElementEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075D55202B302A49003FC16A /* XCUIElementEx.swift */; };
 		075F07252B0DAF090072D7F6 /* DoubleEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075F07242B0DAF090072D7F6 /* DoubleEx.swift */; };
 		075F07272B0DF3320072D7F6 /* WithdrawAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 075F07262B0DF3320072D7F6 /* WithdrawAlertView.xib */; };
 		075F07292B0DF33D0072D7F6 /* WithdrawAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075F07282B0DF33D0072D7F6 /* WithdrawAlertView.swift */; };
@@ -61,6 +63,7 @@
 		0763099E2B0C90870080C5B5 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0763099D2B0C90870080C5B5 /* HistoryView.swift */; };
 		076309A12B0C91D00080C5B5 /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076309A02B0C91D00080C5B5 /* WalletViewModel.swift */; };
 		076309A42B0CC09A0080C5B5 /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076309A32B0CC09A0080C5B5 /* WalletModel.swift */; };
+		0764F3662B21C15800E14891 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0764F3652B21C15800E14891 /* UserDefaultsManager.swift */; };
 		076546C42B049994006BD6FA /* ApplyPurchaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076546C32B049994006BD6FA /* ApplyPurchaseVC.swift */; };
 		076546C62B04A8EC006BD6FA /* ApplyPurchaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076546C52B04A8EC006BD6FA /* ApplyPurchaseViewModel.swift */; };
 		076546C82B04ACD8006BD6FA /* ApplyPurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076546C72B04ACD8006BD6FA /* ApplyPurchaseModel.swift */; };
@@ -137,6 +140,7 @@
 		070E75FA2B1D7B390028FA84 /* WalletCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCollectionCell.swift; sourceTree = "<group>"; };
 		0713D9782AF8E2B20047423E /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		0713D97A2AF8E2C90047423E /* WalletVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVC.swift; sourceTree = "<group>"; };
+		073640A92B317E7300043336 /* PurchaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseUITests.swift; sourceTree = "<group>"; };
 		0743BB472B01F42900585638 /* QRCodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeManager.swift; sourceTree = "<group>"; };
 		0743BB492B01F7F700585638 /* GaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaModel.swift; sourceTree = "<group>"; };
 		0743BB4B2B02288F00585638 /* TwoPauseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPauseVC.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 		075C2F532B075ECD0074ACD4 /* HistoryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailVC.swift; sourceTree = "<group>"; };
 		075C2F552B075F0E0074ACD4 /* HistoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailViewModel.swift; sourceTree = "<group>"; };
 		075C2F572B0761B70074ACD4 /* HistoryDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailModel.swift; sourceTree = "<group>"; };
+		075D55202B302A49003FC16A /* XCUIElementEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElementEx.swift; sourceTree = "<group>"; };
 		075F07242B0DAF090072D7F6 /* DoubleEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleEx.swift; sourceTree = "<group>"; };
 		075F07262B0DF3320072D7F6 /* WithdrawAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawAlertView.xib; sourceTree = "<group>"; };
 		075F07282B0DF33D0072D7F6 /* WithdrawAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawAlertView.swift; sourceTree = "<group>"; };
@@ -192,6 +197,7 @@
 		0763099D2B0C90870080C5B5 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		076309A02B0C91D00080C5B5 /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
 		076309A32B0CC09A0080C5B5 /* WalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
+		0764F3652B21C15800E14891 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		076546C32B049994006BD6FA /* ApplyPurchaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyPurchaseVC.swift; sourceTree = "<group>"; };
 		076546C52B04A8EC006BD6FA /* ApplyPurchaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyPurchaseViewModel.swift; sourceTree = "<group>"; };
 		076546C72B04ACD8006BD6FA /* ApplyPurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyPurchaseModel.swift; sourceTree = "<group>"; };
@@ -393,7 +399,9 @@
 		075B27422AEF831800403AC1 /* DefiAPPUITests */ = {
 			isa = PBXGroup;
 			children = (
+				075D55202B302A49003FC16A /* XCUIElementEx.swift */,
 				075B27432AEF831800403AC1 /* DefiAPPUITests.swift */,
+				073640A92B317E7300043336 /* PurchaseUITests.swift */,
 				075B27452AEF831800403AC1 /* DefiAPPUITestsLaunchTests.swift */,
 			);
 			path = DefiAPPUITests;
@@ -443,6 +451,7 @@
 			children = (
 				075B27602AF1EFA100403AC1 /* NetworkManager.swift */,
 				0743BB472B01F42900585638 /* QRCodeManager.swift */,
+				0764F3652B21C15800E14891 /* UserDefaultsManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1008,6 +1017,7 @@
 				076546C82B04ACD8006BD6FA /* ApplyPurchaseModel.swift in Sources */,
 				074A8C8F2AFB820300566A20 /* LanuchVC.swift in Sources */,
 				0765AA222AFA386C000C0FFC /* SettingView.swift in Sources */,
+				0764F3662B21C15800E14891 /* UserDefaultsManager.swift in Sources */,
 				074D81BB2AFDDB880025D054 /* NibOwnerLoadableEx.swift in Sources */,
 				075B275E2AEFBFEB00403AC1 /* UIButttonEx.swift in Sources */,
 				077492A52B1861E80078DBCF /* SwapView.swift in Sources */,
@@ -1028,6 +1038,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				073640AA2B317E7300043336 /* PurchaseUITests.swift in Sources */,
+				075D55222B302DF5003FC16A /* XCUIElementEx.swift in Sources */,
 				075B27462AEF831800403AC1 /* DefiAPPUITestsLaunchTests.swift in Sources */,
 				075B27442AEF831800403AC1 /* DefiAPPUITests.swift in Sources */,
 			);
@@ -1259,14 +1271,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X6V8PFVL2W;
+				DEVELOPMENT_TEAM = 6393RP8623;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.DefiAPPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1280,14 +1294,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X6V8PFVL2W;
+				DEVELOPMENT_TEAM = 6393RP8623;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.DefiAPPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1302,8 +1318,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X6V8PFVL2W;
+				DEVELOPMENT_TEAM = 6393RP8623;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.DefiAPPUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1321,8 +1338,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X6V8PFVL2W;
+				DEVELOPMENT_TEAM = 6393RP8623;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.DefiAPPUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

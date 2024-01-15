@@ -22,7 +22,7 @@ class TwoFAViewModel {
     var putGaResult: MessageClosure?
     
     func getGaEnable() {
-        if let memberInfo = GC.getMemberInfo() {
+        if let memberInfo = UserDefaultsManager.shared.memberInfo {
             self.updateSwitch?(memberInfo.isGaEnabled)
         }
     }
@@ -46,7 +46,7 @@ class TwoFAViewModel {
             switch result {
             case .success(let fetchData):
                 //成功並更新MemberInfo
-                GC.updateMemberInfo(fetchData: fetchData.data)
+                UserDefaultsManager.shared.memberInfo = fetchData.data
                 self.putGaResult?(true, "")
             case .failure(let error):
                 self.putGaResult?(false, GC.resolveError(error: error))

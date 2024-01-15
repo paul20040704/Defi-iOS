@@ -32,10 +32,12 @@ class LoginVC: UIViewController {
         self.navigationItem.backButtonTitle = ""
         
         emailTextField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
+        emailTextField.text = UserDefaultsManager.shared.keepAccount
         passwordTextField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         
         showPasswordButton.addTarget(self, action: #selector(passwordVisibleBtnClick(_:)), for: .touchUpInside)
         keepButton.addTarget(self, action: #selector(keepAccountClick(_:)), for: .touchUpInside)
+        keepButton.setImage(UIImage(named: UserDefaultsManager.shared.isKeepAccount ? "select" : "normal"), for: .normal)
         forgotButton.addTarget(self, action: #selector(goForgot), for: .touchUpInside)
         nextButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         
@@ -64,19 +66,11 @@ class LoginVC: UIViewController {
             }
         }
         
-        loginViewModel.updateKeepAccount = { [weak self] keepAccount in
-            guard let self else { return }
-            self.emailTextField.text = keepAccount
-        }
-        
         loginViewModel.updateKeepButton = { [weak self] isKeep in
             guard let self else { return }
             let imageName = isKeep ? "select" : "normal"
             self.keepButton.setImage(UIImage(named: imageName), for: .normal)
-            self.keepButton.isSelected = isKeep
         }
-        
-        loginViewModel.judgeKeep()
     }
    
     //MARK: - action
@@ -100,8 +94,7 @@ class LoginVC: UIViewController {
     }
     
     @objc func keepAccountClick(_ btn: UIButton) {
-        btn.isSelected = !btn.isSelected
-        loginViewModel.isKeepAccount = btn.isSelected
+        loginViewModel.keepButtonClick()
     }
     
     @objc func login() {

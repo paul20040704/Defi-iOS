@@ -8,7 +8,6 @@
 import Foundation
 class WalletViewModel {
     var walletVC: WalletVC?
-    
     //資產資訊
     var balanceDatas: [WalletData] = [] {
         didSet {
@@ -32,9 +31,9 @@ class WalletViewModel {
     }
     
     //是否隱藏餘額
-    lazy var isHideBalance: Bool = {
-        return UD.bool(forKey: UserDefaultsKey.hideBalance.rawValue)
-    }()
+    var isHideBalance: Bool {
+        UserDefaultsManager.shared.isHideBalance
+    }
     
     var withdrawData: WithdrawData = WithdrawData()
     //帳本資訊
@@ -127,8 +126,7 @@ class WalletViewModel {
     
     //點擊隱藏資產按鈕
     func changeHideBalance() {
-        self.isHideBalance = !UD.bool(forKey: UserDefaultsKey.hideBalance.rawValue)
-        UD.setValue(self.isHideBalance, forKey: UserDefaultsKey.hideBalance.rawValue)
+        UserDefaultsManager.shared.isHideBalance.toggle()
         self.updateBalance?()
     }
     

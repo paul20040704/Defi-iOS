@@ -37,6 +37,7 @@ class ChangeNameVC: UIViewController {
             DispatchQueue.main.async {
                 HUD.hide()
                 if success {
+                    CustomAlertView.shared.showMe(title: "提醒", message: "密碼暱稱成功")
                     if let vcArr = self.navigationController?.viewControllers {
                         self.navigationController?.popToViewController(vcArr[0], animated: true)
                     }
@@ -53,7 +54,7 @@ class ChangeNameVC: UIViewController {
     }
 
     @objc func nextClick() {
-        if let memberInfo = GC.getMemberInfo() {
+        if let memberInfo = UserDefaultsManager.shared.memberInfo {
             HUD.show(.systemActivity, onView: self.view)
             let paramates: [String: Any] = ["userId": memberInfo.id ?? "", "nickname": userTextField.text ?? ""]
             viewModel.changUserName(paramates: paramates)

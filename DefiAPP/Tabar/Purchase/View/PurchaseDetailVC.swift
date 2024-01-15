@@ -84,24 +84,6 @@ class PurchaseDetailVC: UIViewController {
             }
         }
         
-        viewModel?.isPurchase = { [weak self] canPurchase in
-            guard let self else { return }
-            if canPurchase {
-                let applyPurchaseVC = UIStoryboard(name: "Purchase", bundle: nil).instantiateViewController(withIdentifier: "ApplyPurchaseVC") as! ApplyPurchaseVC
-                applyPurchaseVC.viewModel = ApplyPurchaseViewModel(amount: self.viewModel?.amount ?? 0, productId: self.viewModel?.productData.id ?? "")
-                self.navigationController?.show(applyPurchaseVC, sender: nil)
-            }else {
-                SelectAlertView.shared.showInView(title: "兩步驟驗證", message: "尚未開啟兩步驟驗證，請問是否前往開啟") {
-                    if let vcArr = self.navigationController?.viewControllers {
-                        self.navigationController?.popToViewController(vcArr[0], animated: true)
-                        if let tabBarVC = vcArr[0] as? UITabBarController {
-                            tabBarVC.selectedIndex = 3
-                        }
-                    }
-                }
-            }
-        }
-        
         viewModel?.amount = viewModel?.productData.minumumAmount ?? 0
     }
 
@@ -130,7 +112,20 @@ class PurchaseDetailVC: UIViewController {
     }
     
     @objc func nextClick() {
-        viewModel?.canPurchase()
+        if (viewModel?.isCanPurchase ?? false) {
+            let applyPurchaseVC = UIStoryboard(name: "Purchase", bundle: nil).instantiateViewController(withIdentifier: "ApplyPurchaseVC") as! ApplyPurchaseVC
+            applyPurchaseVC.viewModel = ApplyPurchaseViewModel(amount: self.viewModel?.amount ?? 0, productId: self.viewModel?.productData.id ?? "")
+            self.navigationController?.show(applyPurchaseVC, sender: nil)
+        }else {
+            SelectAlertView.shared.showInView(title: "兩步驟驗證", message: "尚未開啟兩步驟驗證，請問是否前往開啟") {
+                if let vcArr = self.navigationController?.viewControllers {
+                    self.navigationController?.popToViewController(vcArr[0], animated: true)
+                    if let tabBarVC = vcArr[0] as? UITabBarController {
+                        tabBarVC.selectedIndex = 3
+                    }
+                }
+            }
+        }
     }
 
 }

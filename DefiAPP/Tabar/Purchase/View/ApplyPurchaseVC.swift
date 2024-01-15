@@ -104,7 +104,7 @@ class ApplyPurchaseVC: UIViewController {
     }
 
     @objc func nextClick() {
-        if let memberInfo = GC.getMemberInfo() {
+        if let memberInfo = UserDefaultsManager.shared.memberInfo {
             if memberInfo.isGaEnabled {
                 TwofaAlertView.shared.showInView { code in
                     let paramates: [String: Any] = ["userId": memberInfo.id ?? "", "verificationCode": code, "productId": self.viewModel?.productId ?? "", "amount": self.viewModel?.amount ?? 0, "autoRenewEnabled": true]

@@ -12,19 +12,7 @@ class LoginViewModel {
     var loginResult: MessageClosure?
     var registerResult: MessageClosure?
     
-    var keepAccount: String = "" {
-        didSet {
-            updateKeepAccount?(keepAccount)
-        }
-    }
-    
-    var isKeepAccount = false {
-        didSet {
-            updateKeepButton?(isKeepAccount)
-        }
-    }
-    
-    var updateKeepAccount: StringClosure?
+    //var updateKeepAccount: StringClosure?
     var updateKeepButton: BoolClosure?
     
     func login(loginInfo: [String: Any]) {
@@ -33,9 +21,9 @@ class LoginViewModel {
             switch result {
             case .success(let fetchData):
                 if let token = fetchData.data {
-                    UD.setValue(token, forKey: UserDefaultsKey.token.rawValue)
+                    UserDefaultsManager.shared.token = token
                     if let exp = GC.decodeToken(token: token) {
-                        UD.setValue(exp, forKey: UserDefaultsKey.expTime.rawValue)
+                        UserDefaultsManager.shared.expTime = exp
                     }
                     
                     if let email = loginInfo["email"] as? String {
@@ -63,27 +51,22 @@ class LoginViewModel {
     
     //登入後判斷是否記住email
     func loginJudgeKeepEmail(email: String) {
-        UD.setValue(isKeepAccount, forKey: UserDefaultsKey.isKeepAccount.rawValue)
-        if isKeepAccount {
-            UD.setValue(email, forKey: UserDefaultsKey.keepAccount.rawValue)
+        if (UserDefaultsManager.shared.isKeepAccount) {
+            UserDefaultsManager.shared.keepAccount = email
         }else {
-            UD.removeObject(forKey: UserDefaultsKey.keepAccount.rawValue)
+            UserDefaultsManager.shared.resetKeepAccount()
         }
     }
     
-    //判斷是否記住帳號
-    func judgeKeep() {
-        isKeepAccount = UD.bool(forKey: UserDefaultsKey.isKeepAccount.rawValue)
-        if (isKeepAccount) {
-            if let account = UD.string(forKey: UserDefaultsKey.keepAccount.rawValue) {
-                keepAccount = account
-            }
-        }
+    //點擊記住帳號
+    func keepButtonClick() {
+        UserDefaultsManager.shared.isKeepAccount.toggle()
+        self.updateKeepButton?(UserDefaultsManager.shared.isKeepAccount)
     }
     
     //註冊
     func register(loginInfo: [String: Any]) {
-        NS.fetchData(urlStr: "v1/User", method: "POST", parameters: loginInfo, isToken: false) {(result: Result<String, APIError>)  in
+        NS.fetchData(urlStr: "v1/User", method: "POST", parameters: loginInfo, isToken: false) {(result: Result<RegisterModel, APIError>)  in
             
             switch result {
             case .success(_):

@@ -6,13 +6,11 @@
 //
 
 import UIKit
+import PKHUD
 
 class WalletVC: UIViewController {
-
     @IBOutlet weak var hideButton: UIButton!
-    
     @IBOutlet var selectionButttons: [UIButton]!
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var depositView: DepositView!
     @IBOutlet weak var withdrawView: WithdrawView!
@@ -55,11 +53,16 @@ class WalletVC: UIViewController {
         viewModel.updateBalance = { [weak self] in
             guard let self else { return }
             DispatchQueue.main.async {
+                HUD.hide()
                 self.hideButton.setImage(UIImage(named: self.viewModel.isHideBalance ? "show" : "hide"), for: .normal)
                 self.collectionView.reloadData()
             }
+            depositView.viewModel = viewModel
         }
+        
+        HUD.show(.systemActivity, onView: self.view)
         viewModel.getBalance()
+        
     }
     
     func addNotification() {
@@ -68,8 +71,6 @@ class WalletVC: UIViewController {
     
     func setupSubView() {
         self.viewModel.walletVC = self
-        
-        depositView.viewModel = viewModel
         
         withdrawView.viewModel = viewModel
         

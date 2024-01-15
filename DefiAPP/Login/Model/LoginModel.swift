@@ -15,3 +15,9 @@ struct LoginData: Codable {
     let timestamp: Int?
 }
 
+struct RegisterModel: Codable {
+    let statusCode: Int?
+    let success: Bool
+    let message: String?
+    let timestamp: Int?
+}

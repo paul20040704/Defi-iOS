@@ -12,16 +12,9 @@ class SafetyViewModel {
     var updateSwitch: BoolClosure?
     var changePwClosure: MessageClosure?
     
-    //判斷是否開啟FaceId
-    func getFaceID() {
-        let isFaceIdOpen = UD.bool(forKey: UserDefaultsKey.faceID.rawValue)
-        self.updateSwitch?(isFaceIdOpen)
-    }
-    
     //開關FaceId
     func switchFaceId() {
-        let isFaceIdOpen = UD.bool(forKey: UserDefaultsKey.faceID.rawValue)
-        UD.setValue(!isFaceIdOpen, forKey: UserDefaultsKey.faceID.rawValue)
+        UserDefaultsManager.shared.isOpenFaceId.toggle()
     }
     
     //變更使用者密碼
@@ -30,7 +23,7 @@ class SafetyViewModel {
             switch result {
             case .success(let fetchData):
                 //成功並更新MemberInfo
-                GC.updateMemberInfo(fetchData: fetchData.data)
+                UserDefaultsManager.shared.memberInfo = fetchData.data
                 self.changePwClosure?(true, "Success")
             case .failure(let error):
                 self.changePwClosure?(false, GC.resolveError(error: error))

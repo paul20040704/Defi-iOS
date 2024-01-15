@@ -38,12 +38,14 @@ class PurchaseVC: UIViewController {
     }
     
     func observeEvent() {
-        purchaseViewModel.getProduct()
         purchaseViewModel.updateProductView = {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
+        
+        purchaseViewModel.getProduct()
+        purchaseViewModel.getMemberInfo()
     }
 
 
