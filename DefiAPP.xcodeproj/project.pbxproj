@@ -300,10 +300,8 @@
 		0713D9762AF8E05C0047423E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				07A806E72B56729600C0AC35 /* Controller */,
 				07B039F62B06252F000D562F /* Cell */,
-				07CBAFC82AF8DF20002978E9 /* History.storyboard */,
-				07C2DBB52AF262A6003F7160 /* HistoryVC.swift */,
-				075C2F532B075ECD0074ACD4 /* HistoryDetailVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,8 +311,6 @@
 			children = (
 				076309A22B0C92710080C5B5 /* Model */,
 				0763099F2B0C91B90080C5B5 /* ViewModel */,
-				0713D9782AF8E2B20047423E /* Wallet.storyboard */,
-				0713D97A2AF8E2C90047423E /* WalletVC.swift */,
 				0763098D2B0C589B0080C5B5 /* View */,
 			);
 			path = Wallet;
@@ -468,6 +464,7 @@
 		0763098D2B0C589B0080C5B5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				07A806E92B5672C700C0AC35 /* Controller */,
 				070E75F92B1D7AB50028FA84 /* Cell */,
 				0763098F2B0C59C70080C5B5 /* DepositView.xib */,
 				076309912B0C5B960080C5B5 /* DepositView.swift */,
@@ -490,6 +487,7 @@
 		0763098E2B0C58BB0080C5B5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				07A806E62B56728100C0AC35 /* Controller */,
 				0765AA1B2AFA2CAA000C0FFC /* MemberView.swift */,
 				0765AA1D2AFA2CCF000C0FFC /* MemberView.xib */,
 				0765AA212AFA386C000C0FFC /* SettingView.swift */,
@@ -523,14 +521,6 @@
 				0763098E2B0C58BB0080C5B5 /* View */,
 				078FDA0F2AFCD683009213B8 /* Model */,
 				078FDA0E2AFCD673009213B8 /* ViewModel */,
-				0765AA172AFA1055000C0FFC /* Account.storyboard */,
-				0765AA192AFA1061000C0FFC /* AccountVC.swift */,
-				074D81B82AFDD3890025D054 /* SafetyVC.swift */,
-				074D81C02AFE29440025D054 /* TwoFAVC.swift */,
-				074D81C42AFE44A60025D054 /* TwoEnableVC.swift */,
-				0743BB4B2B02288F00585638 /* TwoPauseVC.swift */,
-				07FC00582B0326AD00804C8F /* ChangeNameVC.swift */,
-				07FC005A2B0362D000804C8F /* ChangePasswordVC.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -538,13 +528,10 @@
 		076663C72AF494E900F6AF44 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				07A806E82B5672A700C0AC35 /* Controller */,
 				07C2DBBE2AF377BB003F7160 /* Cell */,
-				07C2DBB82AF348C6003F7160 /* PurchaseVC.swift */,
-				07C2DBBA2AF348D3003F7160 /* Purchase.storyboard */,
-				076663C52AF494DC00F6AF44 /* PurchaseDetailVC.swift */,
 				07CBAFBC2AF8C4C9002978E9 /* DetailView.xib */,
 				07CBAFBE2AF8CBA4002978E9 /* DetailView.swift */,
-				076546C32B049994006BD6FA /* ApplyPurchaseVC.swift */,
 				07B039F22B05FCB6000D562F /* PurchaseSuccessView.swift */,
 				07B039F42B05FCCD000D562F /* PurchaseSuccessView.xib */,
 			);
@@ -587,6 +574,51 @@
 				0743BB492B01F7F700585638 /* GaModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		07A806E62B56728100C0AC35 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0765AA172AFA1055000C0FFC /* Account.storyboard */,
+				0765AA192AFA1061000C0FFC /* AccountVC.swift */,
+				074D81B82AFDD3890025D054 /* SafetyVC.swift */,
+				074D81C02AFE29440025D054 /* TwoFAVC.swift */,
+				074D81C42AFE44A60025D054 /* TwoEnableVC.swift */,
+				0743BB4B2B02288F00585638 /* TwoPauseVC.swift */,
+				07FC00582B0326AD00804C8F /* ChangeNameVC.swift */,
+				07FC005A2B0362D000804C8F /* ChangePasswordVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		07A806E72B56729600C0AC35 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				07CBAFC82AF8DF20002978E9 /* History.storyboard */,
+				07C2DBB52AF262A6003F7160 /* HistoryVC.swift */,
+				075C2F532B075ECD0074ACD4 /* HistoryDetailVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		07A806E82B5672A700C0AC35 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				07C2DBB82AF348C6003F7160 /* PurchaseVC.swift */,
+				07C2DBBA2AF348D3003F7160 /* Purchase.storyboard */,
+				076663C52AF494DC00F6AF44 /* PurchaseDetailVC.swift */,
+				076546C32B049994006BD6FA /* ApplyPurchaseVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		07A806E92B5672C700C0AC35 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0713D9782AF8E2B20047423E /* Wallet.storyboard */,
+				0713D97A2AF8E2C90047423E /* WalletVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		07B039F62B06252F000D562F /* Cell */ = {
@@ -1208,7 +1240,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6393RP8623;
+				DEVELOPMENT_TEAM = X6V8PFVL2W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DefiAPP/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "是否開啟FaceID?";
@@ -1241,7 +1273,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6393RP8623;
+				DEVELOPMENT_TEAM = X6V8PFVL2W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DefiAPP/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "是否開啟FaceID?";

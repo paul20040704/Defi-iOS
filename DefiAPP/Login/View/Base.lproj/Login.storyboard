@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YgP-rp-6Bq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YgP-rp-6Bq">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <accessibilityOverrides isEnabled="YES" dynamicTypePreference="3"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -66,7 +66,7 @@
                                         <rect key="frame" x="25" y="121" width="343" height="56"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="8-20位英文數字混合" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hpg-oR-0K5">
-                                                <rect key="frame" x="20" y="0.0" width="132" height="56"/>
+                                                <rect key="frame" x="20" y="0.0" width="247" height="56"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="passwordTF"/>
                                                 <color key="textColor" red="0.26274509800000001" green="0.29803921570000003" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
@@ -84,6 +84,7 @@
                                             <constraint firstAttribute="trailing" secondItem="VBN-YC-hV6" secondAttribute="trailing" constant="20" id="ba1-Vd-crC"/>
                                             <constraint firstAttribute="height" constant="56" id="mFb-Kx-OPB"/>
                                             <constraint firstItem="hpg-oR-0K5" firstAttribute="leading" secondItem="AEE-bg-dlO" secondAttribute="leading" constant="20" id="oqU-QY-jJn"/>
+                                            <constraint firstItem="VBN-YC-hV6" firstAttribute="leading" secondItem="hpg-oR-0K5" secondAttribute="trailing" constant="10" id="sXT-XP-GZY"/>
                                             <constraint firstItem="hpg-oR-0K5" firstAttribute="top" secondItem="AEE-bg-dlO" secondAttribute="top" id="sdO-dM-ceO"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
